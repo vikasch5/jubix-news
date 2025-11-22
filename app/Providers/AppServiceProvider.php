@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('frontend.*', function ($view) {
             $view->with('categories', Category::with('subCategories')
-                ->where('status', 1)
+                ->where('status', '1')
                 ->get());
         });
     }
