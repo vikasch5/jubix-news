@@ -46,6 +46,7 @@
   <link rel="preload" href="{{ asset('frontend/js/helpers/anime-helper-defined-timelines.js')}}" as="script">
   <link rel="preload" href="{{ asset('frontend/js/uikit-components-bs.js')}}" as="script">
   <link rel="preload" href="{{ asset('frontend/js/app.js')}}" as="script">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- app head for bootstrap core -->
   <script src="{{ asset('frontend/js/app-head-bs.js')}}"></script>

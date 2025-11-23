@@ -44,11 +44,14 @@
 
 
 <!-- Apex Charts JS -->
-<script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+{{--
+<script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js')}}"></script> --}}
 
 <!-- Analytics Dashboard -->
-<link rel="modulepreload" href="{{ asset('backend/assets/analytics-dashboard-Dlvq2xMh.js')}}" />
-<script type="module" src="{{ asset('backend/assets/analytics-dashboard-Dlvq2xMh.js')}}"></script>
+{{--
+<link rel="modulepreload" href="{{ asset('backend/assets/analytics-dashboard-Dlvq2xMh.js')}}" /> --}}
+{{--
+<script type="module" src="{{ asset('backend/assets/analytics-dashboard-Dlvq2xMh.js')}}"></script> --}}
 
 
 <!-- STICKY JS -->

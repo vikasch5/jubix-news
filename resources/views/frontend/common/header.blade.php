@@ -16,7 +16,7 @@
         <div class="panel w-100 sm:w-500px px-2 py-10">
             <h3 class="h1 text-center">Search</h3>
             <form class="hstack gap-1 mt-4 border-bottom p-narrow dark:border-gray-700"
-                action="https://html.themewant.com/news5/main/index.html?">
+                action="https://html.themewant.com/news5/main/{{ route('home') }}?">
                 <span class="d-inline-flex justify-center items-center w-24px sm:w-40 h-24px sm:h-40px opacity-50"><i
                         class="unicon-search icon-3"></i></span>
                 <input type="search" name="q" class="form-control-plaintext ms-1 fs-6 sm:fs-5 w-full dark:text-white"
@@ -31,7 +31,7 @@
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
         <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
             <div class="uc-logo">
-                <a href="index.html" class="h5 text-none text-gray-900 dark:text-white">
+                <a href="{{ route('home') }}" class="h5 text-none text-gray-900 dark:text-white">
                     <img class="w-32px" src="https://html.themewant.com/news5/assets/images/common/logo-icon.svg"
                         alt="News5" data-uc-svg>
                 </a>
@@ -54,16 +54,18 @@
                 <li class="uc-parent">
                     <a href="#">Homepages</a>
                     <ul class="uc-nav-sub" data-uc-nav="">
-                        <li><a href="index.html">Main</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-two/index.html">Classic News</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-three/index.html">Tech</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-four/index.html">Classic Blog</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-five/index.html">Gaming</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-six/index.html">Sports</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-seven/index.html">Newspaper</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-eight/index.html">Magazine</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-nine/index.html">Travel</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-ten/index.html">Food</a></li>
+                        <li><a href="{{ route('home') }}">Main</a></li>
+                        <li><a href="https://html.themewant.com/news5/demo-two/{{ route('home') }}">Classic News</a>
+                        </li>
+                        <li><a href="https://html.themewant.com/news5/demo-three/{{ route('home') }}">Tech</a></li>
+                        <li><a href="https://html.themewant.com/news5/demo-four/{{ route('home') }}">Classic Blog</a>
+                        </li>
+                        <li><a href="https://html.themewant.com/news5/demo-five/{{ route('home') }}">Gaming</a></li>
+                        <li><a href="https://html.themewant.com/news5/demo-six/{{ route('home') }}">Sports</a></li>
+                        <li><a href="https://html.themewant.com/news5/demo-seven/{{ route('home') }}">Newspaper</a></li>
+                        <li><a href="https://html.themewant.com/news5/demo-eight/{{ route('home') }}">Magazine</a></li>
+                        <li><a href="https://html.themewant.com/news5/demo-nine/{{ route('home') }}">Travel</a></li>
+                        <li><a href="https://html.themewant.com/news5/demo-ten/{{ route('home') }}">Food</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Latest</a></li>
@@ -308,7 +310,7 @@
             <i class="icon icon-4 unicon-bookmark mb-2 text-primary dark:text-white"></i>
             <h2 class="h4 md:h3 m-0">Saved articles</h2>
             <p class="fs-5 opacity-60">You have not yet added any article to your bookmarks!</p>
-            <a href="index.html" class="btn btn-sm btn-primary mt-2 uc-modal-close">Browse articles</a>
+            <a href="{{ route('home') }}" class="btn btn-sm btn-primary mt-2 uc-modal-close">Browse articles</a>
         </div>
     </div>
 </div>
@@ -537,42 +539,14 @@
                     <div class="swiper swiper-ticker swiper-ticker-sep px-2" style="--uc-ticker-gap: 32px"
                         data-uc-swiper="items: auto; gap: 32; center: true; center-bounds: true; autoplay: 10000; speed: 10000; autoplay-delay: 0.1; loop: true; allowTouchMove: false; freeMode: true; autoplay-disableOnInteraction: true;">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide text-white">
-                                <div class="type-post post panel">
-                                    <a href="blog-details.html" class="fs-7 fw-normal text-none text-inherit">The Rise
-                                        of AI-Powered Personal Assistants: How They Manage</a>
+                            @foreach ($headlines as $headline)
+                                <div class="swiper-slide text-white">
+                                    <div class="type-post post panel">
+                                        <a href="{{ route('news.detail', optional($headline)->slug) }}"
+                                            class="fs-7 fw-normal text-none text-inherit">{{ optional($headline)->title }}</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide text-white">
-                                <div class="type-post post panel">
-                                    <a href="blog-details.html" class="fs-7 fw-normal text-none text-inherit">Tech
-                                        Innovations Reshaping the Retail Landscape: AI Payments</a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide text-white">
-                                <div class="type-post post panel">
-                                    <a href="blog-details.html" class="fs-7 fw-normal text-none text-inherit">Balancing
-                                        Work and Wellness: Tech Solutions for Healthy</a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide text-white">
-                                <div class="type-post post panel">
-                                    <a href="blog-details.html" class="fs-7 fw-normal text-none text-inherit">The
-                                        Importance of Sleep: Tips for Better Rest and Recovery</a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide text-white">
-                                <div class="type-post post panel">
-                                    <a href="blog-details.html" class="fs-7 fw-normal text-none text-inherit">The Future
-                                        of Sustainable Living: Driving Eco-Friendly Lifestyles</a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide text-white">
-                                <div class="type-post post panel">
-                                    <a href="blog-details.html" class="fs-7 fw-normal text-none text-inherit">Business
-                                        Agility the Digital Age: Leveraging AI and Automation</a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -589,7 +563,8 @@
                             </li>
                             @foreach ($categories as $category)
                                 <li>
-                                    <a href="#">{{ $category->category_name }}
+                                    <a
+                                        href="{{ $category->subCategories->count() == '0' ? route('category', $category->slug) : '#' }}">{{ $category->category_name }}
                                         {!! $category->subCategories->count() > 0 ? '<span data-uc-navbar-parent-icon></span>' : '' !!}</a>
                                     @if ($category->subCategories->count() > 0)
                                         <div class="uc-navbar-dropdown ft-primary text-unset p-3 pb-4 rounded-0 hide-scrollbar"
@@ -598,7 +573,8 @@
                                                 <div class="col-2">
                                                     <ul class="uc-nav uc-navbar-dropdown-nav">
                                                         @foreach ($category->subCategories as $subcategory)
-                                                            <li><a href="">{{ $subcategory->sub_category_name }}</a>
+                                                            <li><a
+                                                                    href="{{ route('category', [$category->slug, $subcategory->slug]) }}">{{ $subcategory->sub_category_name }}</a>
                                                             </li>
                                                         @endforeach
                                                     </ul>
@@ -660,7 +636,7 @@
                             </a>
                         </div>
                         <div class="uc-logo d-block md:d-none">
-                            <a href="index.html">
+                            <a href="{{ route('home') }}">
                                 <img class="logo-img w-100px text-dark dark:text-white"
                                     src="{{ asset('frontend/images/logo/logo.jpg') }}" alt="News5" data-uc-svg>
                             </a>
@@ -668,7 +644,7 @@
                     </div>
                     <div class="uc-navbar-center">
                         <div class="uc-logo d-none md:d-block">
-                            <a href="index.html">
+                            <a href="{{ route('home') }}">
                                 <img class="logo-img w-150px text-dark dark:text-white"
                                     src="{{ asset('frontend/images/logo/logo.jpg') }}" alt="News5" data-uc-svg>
                             </a>
@@ -689,7 +665,7 @@
                                 <i class="icon icon-2 fw-medium unicon-search"></i>
                             </a>
                         </div>
-                        <div class="uc-navbar-item d-none lg:d-inline-flex">
+                        {{-- <div class="uc-navbar-item d-none lg:d-inline-flex">
                             <div class="uc-modes-trigger btn btn-xs w-32px h-32px p-0 border fw-normal rounded-circle dark:text-white hover:bg-gray-25 dark:hover:bg-gray-900"
                                 data-darkmode-toggle="">
                                 <label class="switch">
@@ -698,7 +674,7 @@
                                     <span class="slider"></span>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

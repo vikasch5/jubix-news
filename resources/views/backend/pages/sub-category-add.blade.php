@@ -77,7 +77,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-4 mb-3">
+                                    {{-- <div class="col-md-4 mb-3">
                                         <label class="form-label">Show on Homepage</label>
                                         <select name="show_on_home" class="form-control required">
                                             <option value="0" @selected(optional($category)->show_on_home == 0)>NO</option>
@@ -86,7 +86,7 @@
                                         @error('status')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <!-- Category Image -->
                                     <div class="col-md-4 mb-3">
@@ -98,11 +98,11 @@
                                         @enderror
                                     </div>
                                     @if(optional($category)->image)
-                                    <div class="col-md-4 mb-3">
+                                        <div class="col-md-4 mb-3">
 
-                                        <img src="{{ asset('uploads/sub-category/' . $category->image) }}"
-                                            style="width: 100px; margin-top: 8px; border-radius: 6px;">
-                                    </div>
+                                            <img src="{{ asset('uploads/sub-category/' . $category->image) }}"
+                                                style="width: 100px; margin-top: 8px; border-radius: 6px;">
+                                        </div>
                                     @endif
 
 
@@ -148,7 +148,8 @@
 
                                     <!-- Submit Button -->
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary">{{ optional($category)->id ? "Update Category" : "Save Categroy" }}</button>
+                                        <button type="submit"
+                                            class="btn btn-primary">{{ optional($category)->id ? "Update Category" : "Save Categroy" }}</button>
                                     </div>
 
                                 </div>

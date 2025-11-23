@@ -63,6 +63,14 @@
                                         <label class="form-label">Sub Category</label>
                                         <select name="sub_category_id" id="sub_category_id" class="form-control">
                                             <option value="">Select Sub Category</option>
+                                            @if (!empty($subCategory))
+                                                @foreach ($subCategory as $subCat)
+                                                    <option value="{{ $subCat->id }}"
+                                                        @selected(optional($news)->sub_category_id == $subCat->id)>
+                                                        {{ $subCat->sub_category_name }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                     </div>
 
@@ -187,10 +195,10 @@
 
                 reader.onload = function (e) {
                     $("#preview_images").append(`
-                                                <img src="${e.target.result}" 
-                                                     class="img-thumbnail"
-                                                     style="width:120px;height:120px;object-fit:cover;margin-right:8px;">
-                                            `);
+                                                        <img src="${e.target.result}" 
+                                                             class="img-thumbnail"
+                                                             style="width:120px;height:120px;object-fit:cover;margin-right:8px;">
+                                                    `);
                 };
 
                 reader.readAsDataURL(file);

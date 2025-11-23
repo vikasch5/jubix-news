@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/category/{catSlug?}/{subCatSlug?}', [FrontendController::class, 'categoryIndex'])->name('category');
+Route::get('/news/{slug}', [FrontendController::class, 'newsDetail'])->name('news.detail');
+Route::post('/comments/store', [FrontendController::class, 'commentStore'])->name('comments.store');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login.form');
@@ -31,6 +33,7 @@ Route::prefix('admin')->group(function () {
         Route::post('news-save', [NewsController::class, 'storeOrUpdate'])->name('admin.news.store-or-update');
         Route::post('news-image-remove', [NewsController::class, 'deleteImage'])->name('admin.news.delete-image');
         Route::post('news-delete', [NewsController::class, 'deleteNews'])->name('admin.news.delete');
+        Route::get('comment-list', [NewsController::class, 'commentList'])->name('admin.comment.list');
 
 
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');

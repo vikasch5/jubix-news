@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\News;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -11,13 +13,55 @@ class FrontendController
     public function index()
     {
         $categories = Category::with('subCategories')->where('status', '1')->get();
-        return view('frontend.pages.home', compact('categories'));
+        $allbreakingNews = News::with('comments')->where([['status', 'active'], ['is_breaking_news', '1']])
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+        $homeActiveCategory = Category::with('topNews')->where([['status', '1'], ['show_on_home', '1']])->get();
+        $alllatestNews = News::with('comments')->where('status', 'active')
+            ->orderBy('created_at', 'desc')
+            ->take(10)
+            ->get();
+        return view('frontend.pages.home', compact('categories', 'allbreakingNews', 'homeActiveCategory', 'alllatestNews'));
     }
 
     public function categoryIndex($catSlug = null, $subCatSlug = null)
     {
         $page_category = Category::with('subCategories')->where([['status', '1'], ['slug', $catSlug]])->first();
         $sub_category = SubCategory::where([['status', '1'], ['slug', $subCatSlug]])->first();
-        return view('frontend.pages.category', compact('page_category', 'sub_category'));
+        $newslist = News::where([['status', 'active'], ['category_id', $page_category->id]])
+            ->when($sub_category, function ($query) use ($sub_category) {
+                return $query->where('sub_category_id', $sub_category->id);
+            })
+            ->paginate(10);
+        return view('frontend.pages.category', compact('page_category', 'sub_category', 'newslist'));
+    }
+
+    public function newsDetail($slug)
+    {
+        $news = News::with('comments')->where('slug', $slug)->firstOrFail();
+        $recent_news = News::where('status', 'active')
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+        return view('frontend.pages.news-detail', compact('news', 'recent_news'));
+    }
+
+    public function commentStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'comment' => 'required|string',
+        ]);
+
+        Comment::create([
+            'news_id' => $request->news_id ?? null, // optional if linking to news
+            'name' => $request->name,
+            'email' => $request->email,
+            'comment' => $request->comment,
+        ]);
+
+        return response()->json(['message' => 'Comment saved']);
     }
 }

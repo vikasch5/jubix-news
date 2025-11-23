@@ -23,4 +23,8 @@ class Category extends Model
     {
         return $this->hasMany(SubCategory::class, 'category_id', 'id');
     }
+    public function topNews()
+    {
+        return $this->hasMany(News::class, 'category_id', 'id')->where('show_on_home', '1')->orderBy('created_at', 'desc')->take(5);
+    }
 }

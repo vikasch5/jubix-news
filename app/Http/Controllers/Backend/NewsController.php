@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\News;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -18,11 +20,13 @@ class NewsController
     public function newsAddIndex($id = null)
     {
         $news = [];
+        $subCategory = [];
         if ($id) {
             $news = News::find($id);
+            $subCategory = SubCategory::where('category_id', $news->category_id)->get();
         }
         $all_categories = Category::where('status', '1')->get();
-        return view('backend.pages.news-add', compact('news', 'all_categories'));
+        return view('backend.pages.news-add', compact('news', 'all_categories', 'subCategory'));
     }
 
     public function storeOrUpdate(Request $request)
@@ -138,5 +142,12 @@ class NewsController
             'success' => true,
             'message' => "News deleted successfully"
         ]);
+    }
+
+    public function commentList()
+    {
+        $comments = Comment::with('news')->paginate('10');
+        return view('admin.pages.comment-list', compact('comments'));
+        
     }
 }
