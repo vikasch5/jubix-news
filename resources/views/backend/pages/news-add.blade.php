@@ -89,11 +89,25 @@
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Show on Home</label>
                                         <select name="show_on_home" class="form-control">
-                                            <option value="0" @selected(optional($news)->show_on_home == 0)>No</option>
-                                            <option value="1" @selected(optional($news)->show_on_home == 1)>Yes</option>
+                                            <option value="0" @selected(optional($news)->show_on_home == '0')>No</option>
+                                            <option value="1" @selected(optional($news)->show_on_home == '1')>Yes</option>
                                         </select>
                                     </div>
 
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Is Breaking News</label>
+                                        <select name="is_breaking_news" class="form-control required">
+                                            <option value="0" @selected(optional($news)->is_breaking_news == '0')>NO</option>
+                                            <option value="1" @selected(optional($news)->is_breaking_news == '1')>Yes</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Is Highlight</label>
+                                        <select name="is_highlight" class="form-control required">
+                                            <option value="0" @selected(optional($news)->is_highlight == '0')>NO</option>
+                                            <option value="1" @selected(optional($news)->is_highlight == '1')>Yes</option>
+                                        </select>
+                                    </div>
                                     <!-- News Images -->
                                     <div class="col-md-8 mb-3">
                                         <label class="form-label">News Images</label>
@@ -195,10 +209,10 @@
 
                 reader.onload = function (e) {
                     $("#preview_images").append(`
-                                                        <img src="${e.target.result}" 
-                                                             class="img-thumbnail"
-                                                             style="width:120px;height:120px;object-fit:cover;margin-right:8px;">
-                                                    `);
+                                                            <img src="${e.target.result}" 
+                                                                 class="img-thumbnail"
+                                                                 style="width:120px;height:120px;object-fit:cover;margin-right:8px;">
+                                                        `);
                 };
 
                 reader.readAsDataURL(file);

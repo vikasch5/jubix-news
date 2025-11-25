@@ -20,6 +20,8 @@ class News extends Model
         'status',
         'show_on_home',
         'reporter_name',
+        'is_breaking_news',
+        'is_highlight',
     ];
 
     public function category()

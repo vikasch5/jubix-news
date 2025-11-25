@@ -47,7 +47,7 @@
                                                     </figure>
                                                     <div
                                                         class="post-category hstack gap-narrow position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px px-1 rounded-1 shadow-xs bg-white text-primary">
-                                                        <a class="text-none" href="blog-category.html">World</a>
+                                                        <a class="text-none" href="blog-category.html">{{  $page_category->category_name }}</a>
                                                     </div>
                                                     <div
                                                         class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
@@ -87,7 +87,7 @@
                                                                         <a href="#post_comment"
                                                                             class="post-comments text-none hstack gap-narrow">
                                                                             <i class="icon-narrow unicon-chat"></i>
-                                                                            <span>0</span>
+                                                                            <span>{{ $news->comments->count() }}</span>
                                                                         </a>
                                                                     </div>
                                                                 </div>

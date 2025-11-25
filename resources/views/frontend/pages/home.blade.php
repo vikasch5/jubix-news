@@ -2,193 +2,138 @@
 @section('content')
     <div id="wrapper" class="wrap overflow-hidden-x">
         <!-- Section start -->
-        <div class="section panel mb-4 lg:mb-6">
-            <div class="section-outer panel">
-                <div class="container max-w-xl">
-                    <div class="section-inner panel vstack gap-4">
-                        <div class="section-content">
-                            <div class="row child-col-12 lg:child-cols g-4 lg:g-6 col-match">
-                                <div class="lg:col-9">
-                                    <div class="block-layout slider-layout swiper-parent">
-                                        <div class="block-content position-relative">
-
-                                            <div class="swiper myNewsSlider"
-                                                data-uc-swiper="items: 1; gap: 24; prev: .nav-prev; next: .nav-next; autoplay: 5000; disable-class: d-none;">
-
-                                                <div class="swiper-wrapper">
-
-                                                    <!-- SLIDE 1 -->
-                                                    <div class="swiper-slide">
-                                                        <article class="card shadow-lg border-0 rounded-4 overflow-hidden">
-
-                                                            <!-- IMAGE -->
-                                                            <div class="ratio ratio-16x9 bg-light overflow-hidden">
-                                                                <img class="media-cover image"
-                                                                    src="{{ asset('frontend/images/demo-seven/posts/img-11.jpg') }}"
-                                                                    alt="Solo Travel">
-                                                            </div>
-
-                                                            <!-- CONTENT -->
-                                                            <div class="card-body p-4">
-
-                                                                <div class="text-muted small mb-2">2 months ago</div>
-
-                                                                <h3 class="h5 fw-bold mb-2">
-                                                                    Solo Travel: Some Tips and Destinations for the
-                                                                    Adventurous Explorer
-                                                                </h3>
-
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center small text-muted">
-                                                                    <div class="d-flex align-items-center gap-2">
-                                                                        <img src="{{ asset('frontend/images/avatars/02.png') }}"
-                                                                            class="rounded-circle" width="28" height="28">
-                                                                        <span class="fw-semibold">Peter Sawyer</span>
+        @if($allHighlights->count() > '0')
+            <div class="section panel mb-4 lg:mb-6">
+                <div class="section-outer panel">
+                    <div class="container max-w-xl">
+                        <div class="section-inner panel vstack gap-4">
+                            <div class="section-content">
+                                <div class="row child-col-12 lg:child-cols g-4 lg:g-6 col-match">
+                                    <div class="lg:col-9">
+                                        <div class="block-layout slider-layout swiper-parent uc-dark">
+                                            <div class="block-content panel uc-visible-toggle">
+                                                <div class="swiper"
+                                                    data-uc-swiper="items: 1; active: 1; gap: 4; prev: .nav-prev; next: .nav-next; autoplay: 6000; parallax: true; fade: true; effect: fade; disable-class: d-none;">
+                                                    <div class="swiper-wrapper">
+                                                        @foreach ($allHighlights as $highlight)
+                                                            @php
+                                                                $highlightImages = json_decode($highlight->images, true); // field name may be different
+                                                                $highlightfirstImage = $highlightImages[0] ?? null;
+                                                            @endphp
+                                                            <div class="swiper-slide">
+                                                                <article
+                                                                    class="post type-post panel uc-transition-toggle vstack gap-2 lg:gap-3 h-100 overflow-hidden uc-dark">
+                                                                    <div class="post-media panel overflow-hidden h-100">
+                                                                        <div
+                                                                            class="featured-image bg-gray-25 dark:bg-gray-800 h-100 d-none md:d-block">
+                                                                            <canvas class="h-100 w-100"></canvas>
+                                                                            <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                                                src="{{ $highlightfirstImage ? asset($highlightfirstImage) : asset('frontend/images/common/img-fallback.png') }}"
+                                                                                data-src="{{ $highlightfirstImage ? asset($highlightfirstImage) : asset('frontend/images/common/img-fallback.png') }}"
+                                                                                alt="{{ $highlight->title }}" loading="lazy">
+                                                                        </div>
+                                                                        <div
+                                                                            class="featured-image bg-gray-25 dark:bg-gray-800 ratio ratio-16x9 d-block md:d-none">
+                                                                            <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                                                src="{{ asset('frontend/images/common/img-fallback.png')}}"
+                                                                                data-src="{{ $highlightfirstImage ? asset($highlightfirstImage) : asset('frontend/images/common/img-fallback.png') }}"
+                                                                                alt="{{ $highlight->title }}"
+                                                                                data-uc-img="loading: lazy">
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <i class="unicon-chat"></i> <span>5</span>
-                                                                    </div>
-                                                                </div>
+                                                                    {{-- <div
+                                                                        class="position-cover bg-gradient-to-t from-black to-transparent opacity-90">
+                                                                    </div> --}}
+                                                                    <div class="post-header text-dark" data-swiper-parallax-y="-24">
 
+                                                                        <!-- Title -->
+                                                                        <h3
+                                                                            class="post-title h5 lg:h4 xl:h3 m-0 max-w-600px text-dark text-truncate-2">
+                                                                            <a class="text-none text-dark" href="{{ route('news.detail', $highlight->slug) }}">
+                                                                                {{ $highlight->title }}
+                                                                            </a>
+                                                                        </h3>
+
+                                                                        <!-- Meta -->
+                                                                        <div
+                                                                            class="post-meta panel hstack justify-between fs-7 text-dark text-opacity-60 mt-1">
+
+                                                                            <div class="meta">
+                                                                                <div class="hstack gap-3">
+
+                                                                                    <!-- Time BEFORE comment -->
+                                                                                    <div class="hstack gap-narrow">
+                                                                                        <i class="icon-clock"></i>
+                                                                                        <span>{{ $highlight->created_at->diffForHumans() }}</span>
+                                                                                    </div>
+
+                                                                                    <!-- Comments -->
+                                                                                    <div class="hstack gap-narrow">
+                                                                                        <i class="icon-narrow unicon-chat"></i>
+                                                                                        <span>{{ $highlight->comments->count() }}</span>
+                                                                                    </div>
+
+                                                                                    <!-- Author -->
+                                                                                    <div class="post-author hstack gap-1">
+                                                                                        <a href="page-author.html"
+                                                                                            data-uc-tooltip="Peter Sawyer">
+                                                                                            <img src="{{ asset('frontend/images/avatars/02.png') }}"
+                                                                                                alt="{{ $highlight->reporter_name }}"
+                                                                                                class="w-24px h-24px rounded-circle">
+                                                                                        </a>
+                                                                                        <a href="page-author.html"
+                                                                                            class="text-dark text-none fw-bold">
+                                                                                            {{ $highlight->reporter_name }}
+                                                                                        </a>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="actions">
+                                                                                <div class="hstack gap-1"></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </article>
                                                             </div>
-                                                        </article>
+                                                        @endforeach
                                                     </div>
-
-                                                    <!-- SLIDE 2 -->
-                                                    <div class="swiper-slide">
-                                                        <article class="card shadow-lg border-0 rounded-4 overflow-hidden">
-
-                                                            <div class="ratio ratio-16x9 bg-light overflow-hidden">
-                                                                <img class="media-cover image"
-                                                                    src="{{ asset('frontend/images/demo-seven/posts/img-15.jpg') }}"
-                                                                    alt="Gaming in AI">
-                                                            </div>
-
-                                                            <div class="card-body p-4">
-                                                                <div class="text-muted small mb-2">9 months ago</div>
-
-                                                                <h3 class="h5 fw-bold mb-2">
-                                                                    Gaming in the Age of AI: Strategies for Startups
-                                                                </h3>
-
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center small text-muted">
-                                                                    <div class="d-flex align-items-center gap-2">
-                                                                        <img src="{{ asset('frontend/images/avatars/02.png') }}"
-                                                                            class="rounded-circle" width="28" height="28">
-                                                                        <span class="fw-semibold">Peter Sawyer</span>
-                                                                    </div>
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <i class="unicon-chat"></i> <span>19</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </article>
-                                                    </div>
-
-                                                    <!-- SLIDE 3 -->
-                                                    <div class="swiper-slide">
-                                                        <article class="card shadow-lg border-0 rounded-4 overflow-hidden">
-
-                                                            <div class="ratio ratio-16x9 bg-light overflow-hidden">
-                                                                <img class="media-cover image"
-                                                                    src="{{ asset('frontend/images/demo-seven/posts/img-18.jpg') }}"
-                                                                    alt="VR Mental Health">
-                                                            </div>
-
-                                                            <div class="card-body p-4">
-                                                                <div class="text-muted small mb-2">2 months ago</div>
-
-                                                                <h3 class="h5 fw-bold mb-2">
-                                                                    Virtual Reality and Mental Health: Exploring the
-                                                                    Therapeutic
-                                                                </h3>
-
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center small text-muted">
-                                                                    <div class="d-flex align-items-center gap-2">
-                                                                        <img src="{{ asset('frontend/images/avatars/08.png') }}"
-                                                                            class="rounded-circle" width="28" height="28">
-                                                                        <span class="fw-semibold">Nisi Nyung</span>
-                                                                    </div>
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <i class="unicon-chat"></i> <span>290</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </article>
-                                                    </div>
-
-                                                    <!-- SLIDE 4 -->
-                                                    <div class="swiper-slide">
-                                                        <article class="card shadow-lg border-0 rounded-4 overflow-hidden">
-
-                                                            <div class="ratio ratio-16x9 bg-light overflow-hidden">
-                                                                <img class="media-cover image"
-                                                                    src="{{ asset('frontend/images/demo-seven/posts/img-20.jpg') }}"
-                                                                    alt="Smart Homes">
-                                                            </div>
-
-                                                            <div class="card-body p-4">
-                                                                <div class="text-muted small mb-2">23 days ago</div>
-
-                                                                <h3 class="h5 fw-bold mb-2">
-                                                                    Smart Homes, Smarter Living: Exploring IoT and AI
-                                                                </h3>
-
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center small text-muted">
-                                                                    <div class="d-flex align-items-center gap-2">
-                                                                        <img src="{{ asset('frontend/images/avatars/01.png') }}"
-                                                                            class="rounded-circle" width="28" height="28">
-                                                                        <span class="fw-semibold">David Peterson</span>
-                                                                    </div>
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <i class="unicon-chat"></i> <span>15</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </article>
-                                                    </div>
-
+                                                </div>
+                                                <div
+                                                    class="swiper-nav nav-prev position-absolute top-50 start-0 translate-middle-y btn btn-alt-primary text-black rounded-circle p-0 mx-2 border-0 shadow-xs w-32px h-32px z-1 uc-hidden-hover">
+                                                    <i class="icon-1 unicon-chevron-left"></i>
+                                                </div>
+                                                <div
+                                                    class="swiper-nav nav-next position-absolute top-50 end-0 translate-middle-y btn btn-alt-primary text-black rounded-circle p-0 mx-2 border-0 shadow-xs w-32px h-32px z-1 uc-hidden-hover">
+                                                    <i class="icon-1 unicon-chevron-right"></i>
                                                 </div>
                                             </div>
-
-                                            <!-- NAV BUTTONS -->
-                                            <button
-                                                class="nav-prev position-absolute top-50 start-0 translate-middle-y btn btn-light shadow rounded-circle w-32px h-32px">
-                                                <i class="unicon-chevron-left"></i>
-                                            </button>
-                                            <button
-                                                class="nav-next position-absolute top-50 end-0 translate-middle-y btn btn-light shadow rounded-circle w-32px h-32px">
-                                                <i class="unicon-chevron-right"></i>
-                                            </button>
-
                                         </div>
-                                    </div>
 
-                                </div>
-                                <div class="lg:col-3">
-                                    <div class="panel cstack gap-2 h-100">
-                                        <div>
-                                            <div class="widget ad-widget vstack gap-2">
-                                                <div class="widget-title text-center">
-                                                    <h5 class="fs-7 ft-tertiary text-uppercase m-0">Sponsore</h5>
-                                                </div>
-                                                <div class="widget-content">
-                                                    <a class="cstack max-w-300px mx-auto text-none"
-                                                        href="https://themeforest.net/user/reacthemes/portfolio"
-                                                        target="_blank" rel="nofollow">
-                                                        <img class="d-none sm:d-block"
-                                                            src="{{ asset('frontend/images/common/ad-desktop.jpg')}}"
-                                                            alt="Ad slot">
-                                                        <img class="d-block sm:d-none"
-                                                            src="{{ asset('frontend/images/common/ad-mobile.html')}}"
-                                                            alt="Ad slot">
-                                                    </a>
+                                    </div>
+                                    <div class="lg:col-3">
+                                        <div class="panel cstack gap-2 h-100">
+                                            <div>
+                                                <div class="widget ad-widget vstack gap-2">
+                                                    <div class="widget-title text-center">
+                                                        <h5 class="fs-7 ft-tertiary text-uppercase m-0">Sponsore</h5>
+                                                    </div>
+                                                    <div class="widget-content">
+                                                        <a class="cstack max-w-300px mx-auto text-none"
+                                                            href="https://themeforest.net/user/reacthemes/portfolio"
+                                                            target="_blank" rel="nofollow">
+                                                            <img class="d-none sm:d-block"
+                                                                src="{{ asset('frontend/images/common/ad-desktop.jpg')}}"
+                                                                alt="Ad slot">
+                                                            <img class="d-block sm:d-none"
+                                                                src="{{ asset('frontend/images/common/ad-mobile.html')}}"
+                                                                alt="Ad slot">
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -199,7 +144,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
 
         <!-- Section end -->
 
@@ -285,13 +230,14 @@
         <!-- Section end -->
 
         <!-- Section start -->
-        @if ($homeActiveCategory->count() > 0)
+        @if ($homeActiveCategory->count() > 0 )
             <div class="section panel overflow-hidden">
                 <div class="section-outer panel">
-                    <div class="container max-w-xl">
+                    <div class="container max-w-xl pb-4">
                         <div class="section-inner">
                             <div class="row child-cols-12 lg:child-cols g-4 lg:g-6 col-match" data-uc-grid>
                                 @foreach ($homeActiveCategory as $homeCategory)
+                                    @if ($homeCategory->topNews->count() > '0')
                                     <div class="lg:col-6">
                                         <div class="block-layout grid-layout vstack gap-2 lg:gap-3 panel overflow-hidden">
                                             <div class="block-header panel pt-1 border-top">
@@ -442,6 +388,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
@@ -451,7 +398,7 @@
         @endif
 
         <!-- Section start -->
-        <div id="live_now" class="live_now section panel uc-dark swiper-parent">
+        {{-- <div id="live_now" class="live_now section panel uc-dark swiper-parent">
             <div class="section-outer panel py-4 lg:py-6 bg-gray-900 text-white">
                 <div class="container max-w-xl">
                     <div
@@ -742,16 +689,16 @@
                                         <!-- Slides thumbs -->
                                         <div class="swiper swiper-thumbs swiper-thumbs-progress rounded order-2"
                                             data-uc-swiper="items: 2;
-                                                                                                                                                        gap: 4; 
-                                                                                                                                                        disable-class: last-slide;"
+                                                                                                                                                                                gap: 4; 
+                                                                                                                                                                                disable-class: last-slide;"
                                             data-uc-swiper-s="items: auto;
-                                                                                                                                                        direction: vertical;
-                                                                                                                                                        autoHeight: true;
-                                                                                                                                                        mousewheel: true;
-                                                                                                                                                        freeMode: false;
-                                                                                                                                                        watchSlidesVisibility: true;
-                                                                                                                                                        watchSlidesProgress: true;
-                                                                                                                                                        watchOverflow: true">
+                                                                                                                                                                                direction: vertical;
+                                                                                                                                                                                autoHeight: true;
+                                                                                                                                                                                mousewheel: true;
+                                                                                                                                                                                freeMode: false;
+                                                                                                                                                                                watchSlidesVisibility: true;
+                                                                                                                                                                                watchSlidesProgress: true;
+                                                                                                                                                                                watchOverflow: true">
                                             <div class="swiper-wrapper md:flex-1">
                                                 <div class="swiper-slide overflow-hidden rounded min-h-64px lg:min-h-100px">
                                                     <div class="swiper-slide-progress position-cover z-0">
@@ -922,7 +869,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Section end -->
         @if ($alllatestNews->count() > 0)
@@ -1016,7 +963,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="widget popular-widget vstack gap-2 p-2 border">
+                                        {{-- <div class="widget popular-widget vstack gap-2 p-2 border">
                                             <div class="widget-title text-center">
                                                 <h5 class="fs-7 ft-tertiary text-uppercase m-0">Popular now</h5>
                                             </div>
@@ -1202,7 +1149,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

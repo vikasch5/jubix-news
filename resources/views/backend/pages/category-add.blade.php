@@ -68,17 +68,6 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label class="form-label">Is Breaking News</label>
-                                        <select name="is_breaking_news" class="form-control required">
-                                            <option value="0" @selected(optional($category)->is_breaking_news == 0)>NO</option>
-                                            <option value="1" @selected(optional($category)->is_breaking_news == 1)>Yes</option>
-                                        </select>
-                                        @error('status')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
                                     <!-- Category Image -->
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Category Image</label>

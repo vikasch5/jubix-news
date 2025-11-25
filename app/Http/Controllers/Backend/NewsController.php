@@ -53,6 +53,9 @@ class NewsController
                 'meta_description'  => $request->meta_description,
                 'meta_keywords'     => $request->meta_keywords,
                 'description'       => $request->description,
+                'is_breaking_news'  => $request->is_breaking_news,
+                'is_highlight'  => $request->is_highlight,
+
             ]
         );
 

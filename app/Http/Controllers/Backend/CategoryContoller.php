@@ -39,7 +39,6 @@ class CategoryContoller
             'description'       => 'nullable|string',
             'category_image'    => 'nullable|image|mimes:jpeg,png,jpg|max:1024', // max 1MB
             'show_on_home'    => 'nullable',
-            'is_breaking_news'    => 'nullable',
         ]);
 
         // Auto-generate slug if empty
@@ -66,7 +65,6 @@ class CategoryContoller
             'meta_keywords'    => $request->meta_keywords,
             'description'      => $request->description,
             'show_on_home'     => $request->show_on_home ?? '0',
-            'is_breaking_news'     => $request->is_breaking_news ?? '0',
         ];
 
         $category = Category::updateOrCreate(['id' => $id], $data);

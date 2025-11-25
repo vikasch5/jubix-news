@@ -18,11 +18,17 @@ class FrontendController
             ->take(5)
             ->get();
         $homeActiveCategory = Category::with('topNews')->where([['status', '1'], ['show_on_home', '1']])->get();
+        // dd($homeActiveCategory->toArray());
         $alllatestNews = News::with('comments')->where('status', 'active')
             ->orderBy('created_at', 'desc')
             ->take(10)
             ->get();
-        return view('frontend.pages.home', compact('categories', 'allbreakingNews', 'homeActiveCategory', 'alllatestNews'));
+            
+        $allHighlights = News::with('comments')->where([['status', 'active'], ['is_highlight', '1']])
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+        return view('frontend.pages.home', compact('categories', 'allbreakingNews', 'homeActiveCategory', 'alllatestNews', 'allHighlights'));
     }
 
     public function categoryIndex($catSlug = null, $subCatSlug = null)
