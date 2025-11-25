@@ -19,7 +19,7 @@
         content="laravel template, laravel admin, laravel dashboard, laravel admin panel, laravel admin template, dashboard for laravel, admin panel for laravel, template dashboard, bootstrap dashboard, dashboard template, bootstrap admin template, bootstrap 5 admin template, admin template, admin panel in laravel">
 
     <!-- TITLE -->
-    <title>Dialer</title>
+    <title>Admin Panel - BharatNews</title>
 
     <!-- FAVICON -->
     <link rel="icon" href="{{ asset('backend/assets/images/brand-logos/favicon.ico')}}" type="image/x-icon">
