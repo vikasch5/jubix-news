@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CategoryContoller;
 // use App\Http\Controllers\Backend\CategoryContoller;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,8 @@ Route::prefix('admin')->group(function () {
         Route::post('news-image-remove', [NewsController::class, 'deleteImage'])->name('admin.news.delete-image');
         Route::post('news-delete', [NewsController::class, 'deleteNews'])->name('admin.news.delete');
         Route::get('comment-list', [NewsController::class, 'commentList'])->name('admin.comment.list');
-
+        Route::get('settings/{id?}', [SettingController::class, 'index'])->name('admin.settings');
+        Route::post('settings-save', [SettingController::class, 'update'])->name('admin.settings.save');
 
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');
     });

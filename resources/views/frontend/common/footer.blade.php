@@ -13,25 +13,56 @@
                             </nav> --}}
                             <div class="footer-social hstack justify-center gap-2 lg:gap-3">
                                 <ul class="nav-x gap-2">
-                                    @php
-                            $shareUrl = route('home');
-                            $shareTitle = env('APP_NAME');
-                        @endphp
-                                    <li>
-                                        <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="https://www.linkedin.com/shareArticle?mini=true&url={{ $shareUrl }}&title={{ $shareTitle }}"><i class="icon icon-2 unicon-logo-linkedin"></i></a>
-                                    </li>
-                                    <li>
-                                        <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}"><i class="icon icon-2 unicon-logo-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareTitle }}"><i class="icon icon-2 unicon-logo-x-filled"></i></a>
-                                    </li>
-                                    <li>
-                                        <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="https://www.instagram.com/?url={{ $shareUrl }}"><i class="icon icon-2 unicon-logo-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}"><i class="fa-brands fa-whatsapp icon-2 icon"></i></a>
-                                    </li>
+                                    
+                                    {{-- LinkedIn --}}
+                        @if(!empty($settings->linkedin))
+                            <li>
+                                <a href="{{ $settings->linkedin }}" target="_blank"
+                                class="hover:text-gray-900 dark:hover:text-white duration-150">
+                                    <i class="icon icon-2 unicon-logo-linkedin"></i>
+                                </a>
+                            </li>
+                        @endif
+
+                        {{-- Facebook --}}
+                        @if(!empty($settings->facebook))
+                            <li>
+                                <a href="{{ $settings->facebook }}" target="_blank"
+                                class="hover:text-gray-900 dark:hover:text-white duration-150">
+                                    <i class="icon icon-2 unicon-logo-facebook"></i>
+                                </a>
+                            </li>
+                        @endif
+
+                        {{-- Twitter --}}
+                        @if(!empty($settings->twitter))
+                            <li>
+                                <a href="{{ $settings->twitter }}" target="_blank"
+                                class="hover:text-gray-900 dark:hover:text-white duration-150">
+                                    <i class="icon icon-2 unicon-logo-x-filled"></i>
+                                </a>
+                            </li>
+                        @endif
+
+                        {{-- Instagram --}}
+                        @if(!empty($settings->instagram))
+                            <li>
+                                <a href="{{ $settings->instagram }}" target="_blank"
+                                class="hover:text-gray-900 dark:hover:text-white duration-150">
+                                    <i class="icon icon-2 unicon-logo-instagram"></i>
+                                </a>
+                            </li>
+                        @endif
+
+                        {{-- WhatsApp --}}
+                        @if(!empty($settings->whatsapp))
+                            <li>
+                                <a href="https://wa.me/{{ $settings->whatsapp }}" target="_blank"
+                                class="hover:text-gray-900 dark:hover:text-white duration-150">
+                                    <i class="fa-brands fa-whatsapp icon-2 icon"></i>
+                                </a>
+        </li>
+    @endif
                                 </ul>
                                 <div class="vr"></div>
                                 <div class="d-inline-block">

@@ -33,9 +33,9 @@
                 </li>
 
                 <li
-                    class="slide has-sub {{ in_array(Route::currentRouteName(), ['admin.comment.list','admin.category.index', 'admin.category.add', 'admin.sub.category.index', 'admin.sub.category.add', 'admin.news.list', 'admin.news.add']) ? 'active' : '' }}">
+                    class="slide has-sub {{ in_array(Route::currentRouteName(), ['admin.comment.list', 'admin.category.index', 'admin.category.add', 'admin.sub.category.index', 'admin.sub.category.add', 'admin.news.list', 'admin.news.add']) ? 'active' : '' }}">
                     <a href="javascript:void(0);"
-                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.comment.list','admin.category.index', 'admin.category.add', 'admin.sub.category.index', 'admin.sub.category.add', 'admin.news.list', 'admin.news.add']) ? 'active' : '' }}">
+                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.comment.list', 'admin.category.index', 'admin.category.add', 'admin.sub.category.index', 'admin.sub.category.add', 'admin.news.list', 'admin.news.add']) ? 'active' : '' }}">
                         <i class="ri-arrow-right-s-line side-menu__angle"></i>
                         <i class="side-menu__icon ri-newspaper-line"></i>
                         <span class="side-menu__label">Manage News</span>
@@ -56,16 +56,23 @@
                         </li>
 
                         <li class="slide">
-                            <a href="{{ route('admin.news.list') }}" class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.news.list', 'admin.news.add']) ? 'active' : '' }}">News</a>
+                            <a href="{{ route('admin.news.list') }}"
+                                class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.news.list', 'admin.news.add']) ? 'active' : '' }}">News</a>
                         </li>
-                         <li class="slide">
-                            <a href="{{ route('admin.comment.list') }}" class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.comment.list']) ? 'active' : '' }}">Comments</a>
+                        <li class="slide">
+                            <a href="{{ route('admin.comment.list') }}"
+                                class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.comment.list']) ? 'active' : '' }}">Comments</a>
                         </li>
                     </ul>
                 </li>
 
-                
-
+                <li class="slide">
+                    <a href="{{ route('admin.settings') }}"
+                        class="side-menu__item {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}">
+                        <i class="side-menu__icon ri-settings-3-line"></i>
+                        <span class="side-menu__label">Settings</span>
+                    </a>
+                </li>
 
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Setting;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,9 +32,11 @@ class AppServiceProvider extends ServiceProvider
                 ->orderBy('created_at', 'desc')
                 ->take(10)
                 ->get();
+            $settings = Setting::first();
             $view->with([
                 'categories' => $categories,
                 'headlines'    => $headline,
+                'settings' => $settings,
             ]);
         });
     }
