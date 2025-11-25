@@ -56,8 +56,8 @@
     </li>
 
     @foreach ($categories as $category)
-        <li class="uc-parent">
-            <a href="#">{{ $category->category_name }}</a>
+        <li {{ $category->subCategories->count() > 0 ? 'class="uc-parent"' : ''}}>
+            <a href="{{ $category->subCategories->count() == '0' ? route('category', $category->slug) : '#' }}">{{ $category->category_name }}</a>
 
             @if($category->subCategories->count() > 0)
                 <ul class="uc-nav-sub" data-uc-nav>
