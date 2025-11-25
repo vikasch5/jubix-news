@@ -51,96 +51,48 @@
                 </span>
             </form>
             <ul class="nav-y gap-narrow fw-bold fs-5" data-uc-nav>
-                <li class="uc-parent">
-                    <a href="#">Homepages</a>
-                    <ul class="uc-nav-sub" data-uc-nav="">
-                        <li><a href="{{ route('home') }}">Main</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-two/{{ route('home') }}">Classic News</a>
+    <li class="uc-parent">
+        <a href="{{ route('home') }}">Home</a>
+    </li>
+
+    @foreach ($categories as $category)
+        <li class="uc-parent">
+            <a href="#">{{ $category->category_name }}</a>
+
+            @if($category->subCategories->count() > 0)
+                <ul class="uc-nav-sub" data-uc-nav>
+                    @foreach ($category->subCategories as $subcategory)
+                        <li>
+                            <a href="{{ route('category', [$category->slug, $subcategory->slug]) }}">
+                                {{ $subcategory->sub_category_name }}
+                            </a>
                         </li>
-                        <li><a href="https://html.themewant.com/news5/demo-three/{{ route('home') }}">Tech</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-four/{{ route('home') }}">Classic Blog</a>
-                        </li>
-                        <li><a href="https://html.themewant.com/news5/demo-five/{{ route('home') }}">Gaming</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-six/{{ route('home') }}">Sports</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-seven/{{ route('home') }}">Newspaper</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-eight/{{ route('home') }}">Magazine</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-nine/{{ route('home') }}">Travel</a></li>
-                        <li><a href="https://html.themewant.com/news5/demo-ten/{{ route('home') }}">Food</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Latest</a></li>
-                <li><a href="#">Trending</a></li>
-                <li class="uc-parent">
-                    <a href="#">Inner Pages</a>
-                    <ul class="uc-nav-sub" data-uc-nav="">
-                        <li class="uc-parent">
-                            <a href="blog.html">Blog</a>
-                            <ul class="uc-nav-sub">
-                                <li><a href="blog.html">Full Width</a></li>
-                                <li><a href="blog-2cols.html">Grid 2 Cols</a></li>
-                                <li><a href="blog-3cols.html">Grid 3 Cols</a></li>
-                                <li><a href="blog-4cols.html">Grid 4 Cols</a></li>
-                            </ul>
-                        </li>
-                        <li class="uc-parent">
-                            <a href="blog-details.html">Blog - detail</a>
-                            <ul class="uc-nav-sub">
-                                <li><a href="blog-details.html">Blog detail</a></li>
-                                <li><a href="blog-details-2.html">Blog detail - v2</a></li>
-                            </ul>
-                        </li>
-                        <li class="uc-parent">
-                            <a href="#">Useful pages</a>
-                            <ul class="uc-nav-sub">
-                                <li><a href="sign-up.html">Sign up</a></li>
-                                <li><a href="sign-in.html">Sign in</a></li>
-                                <li><a href="reset-password.html">Reset password</a></li>
-                                <li><a href="404.html">404 page</a></li>
-                                <li><a href="coming-soon.html">Coming soon</a></li>
-                            </ul>
-                        </li>
-                        <li class="uc-parent">
-                            <a href="#">Other pages</a>
-                            <ul class="uc-nav-sub">
-                                <li><a href="page-faq.html">FAQ</a></li>
-                                <li><a href="page-terms.html">Terms of use</a></li>
-                                <li><a href="page-privacy.html">Privacy policy</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="uc-parent">
-                    <a href="shop.html">Shop</a>
-                    <ul class="uc-nav-sub" data-uc-nav="">
-                        <li class="uc-parent">
-                            <a href="shop.html">Shop layouts</a>
-                            <ul class="uc-nav-sub">
-                                <li><a href="shop.html">Shop 4 cols</a></li>
-                                <li><a href="shop-3.html">Shop 3 cols</a></li>
-                                <li><a href="shop-2.html">Shop 2 cols</a></li>
-                                <li><a href="shop-sidebar.html">Shop with sidebar</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="shop-category.html">Archive category</a></li>
-                        <li><a href="shop-product-detail.html">Product detail</a></li>
-                        <li><a href="shop-product-detail-2.html">Product detail - v2</a></li>
-                        <li><a href="shop-cart.html">Cart</a></li>
-                        <li><a href="shop-cart-2.html">Cart - v2</a></li>
-                        <li><a href="shop-checkout.html">Checkout</a></li>
-                        <li><a href="shop-checkout-2.html">Checkout - v2</a></li>
-                        <li><a href="shop-order.html">Order confirmation</a></li>
-                    </ul>
-                </li>
-                <li class="hr opacity-10 my-1"></li>
-                <li><a href="sign-in.html">Sign in</a></li>
-                <li><a href="sign-up.html">Create an account</a></li>
-            </ul>
+                    @endforeach
+                </ul>
+            @endif
+
+        </li>
+    @endforeach
+</ul>
+
             <ul class="social-icons nav-x mt-4">
                 <li>
-                    <a href="#"><i class="unicon-logo-medium icon-2"></i></a>
-                    <a href="#"><i class="unicon-logo-x-filled icon-2"></i></a>
-                    <a href="#"><i class="unicon-logo-instagram icon-2"></i></a>
-                    <a href="#"><i class="unicon-logo-pinterest icon-2"></i></a>
+                    @php
+                        $shareUrl = route('home');
+                        $shareTitle = env('APP_NAME');
+                    @endphp
+                    <a
+                        href="https://www.linkedin.com/shareArticle?mini=true&url={{ $shareUrl }}&title={{ $shareTitle }}"><i
+                            class="icon icon-2 unicon-logo-linkedin"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}"><i
+                            class="icon icon-2 unicon-logo-facebook"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareTitle }}"><i
+                            class="icon icon-2 unicon-logo-x-filled"></i></a>
+                    <a href="https://www.instagram.com/?url={{ $shareUrl }}"><i
+                            class="icon icon-2 unicon-logo-instagram"></i></a>
+                    <a href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}"><i
+                            class="fa-brands fa-whatsapp icon-2 icon"></i></a>
+
                 </li>
             </ul>
             <div class="py-2 hstack gap-2 mt-4 bg-white dark:bg-gray-900" data-uc-sticky="position: bottom">
