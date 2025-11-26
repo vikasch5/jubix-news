@@ -1,4 +1,7 @@
 @extends('frontend.common.master')
+@section('meta_title', $news->meta_title)
+@section('meta_description', $news->meta_description)
+@section('meta_keywords', $news->meta_keywords)
 @section('content')
     <style>
         .myNewsSwiper .swiper-button-next,
@@ -363,7 +366,7 @@
                                             class="image wp-image-10098 attachment-full size-full" alt="" decoding="async"
                                             srcset="https://reactheme.com/news5/news-magazine/wp-content/uploads/sites/26/2025/04/add__image.png 600w, https://reactheme.com/news5/news-magazine/wp-content/uploads/sites/26/2025/04/add__image-257x300.png 257w"
                                             sizes="(max-width: 600px) 100vw, 600px"></section>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -402,11 +405,11 @@
 
                         // Show success message
                         $(".response-msg").html(`
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        ${response.message ?? "Comment added successfully!"}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                    </div>
-                                `);
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            ${response.message ?? "Comment added successfully!"}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                        </div>
+                                    `);
                     },
 
                     error: function (xhr) {
@@ -417,11 +420,11 @@
 
                         // Show general error alert
                         $(".response-msg").html(`
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        Please fix the errors below.
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                    </div>
-                                `);
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            Please fix the errors below.
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                        </div>
+                                    `);
 
                         // Show field-wise error messages
                         $.each(errors, function (key, value) {

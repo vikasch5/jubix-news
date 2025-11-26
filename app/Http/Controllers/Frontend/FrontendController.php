@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\News;
 use App\Models\SubCategory;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class FrontendController
@@ -28,7 +29,8 @@ class FrontendController
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get();
-        return view('frontend.pages.home', compact('categories', 'allbreakingNews', 'homeActiveCategory', 'alllatestNews', 'allHighlights'));
+        $videos = Video::where('status', '1')->get();
+        return view('frontend.pages.home', compact('categories', 'allbreakingNews', 'homeActiveCategory', 'alllatestNews', 'allHighlights','videos'));
     }
 
     public function categoryIndex($catSlug = null, $subCatSlug = null)

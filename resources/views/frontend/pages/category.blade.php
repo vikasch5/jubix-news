@@ -1,4 +1,7 @@
 @extends('frontend.common.master')
+@section('meta_title', $sub_category->meta_title ?? $page_category->meta_title)
+@section('meta_description', $sub_category->meta_description ?? $page_category->meta_description)
+@section('meta_keywords', $sub_category->meta_keywords ?? $page_category->meta_keywords)
 @section('content')
     <div id="wrapper" class="wrap overflow-hidden-x">
         <div class="breadcrumbs panel z-1 py-2 bg-gray-25 dark:bg-gray-100 dark:bg-opacity-5 dark:text-white">

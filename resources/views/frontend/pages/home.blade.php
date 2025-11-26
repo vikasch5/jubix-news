@@ -49,7 +49,8 @@
                                                                         <!-- Title -->
                                                                         <h3
                                                                             class="post-title h5 lg:h4 xl:h3 m-0 max-w-600px text-dark text-truncate-2">
-                                                                            <a class="text-none text-dark" href="{{ route('news.detail', $highlight->slug) }}">
+                                                                            <a class="text-none text-dark"
+                                                                                href="{{ route('news.detail', $highlight->slug) }}">
                                                                                 {{ $highlight->title }}
                                                                             </a>
                                                                         </h3>
@@ -227,10 +228,90 @@
                 </div>
             </div>
         @endif
+        @if ($videos->count() > 0)
+            <div class="section panel overflow-hidden swiper-parent">
+                <div class="section-outer panel py-4 lg:py-6 dark:text-white">
+                    <div class="container max-w-xl">
+                        <div class="section-inner panel vstack gap-2">
+                            <div class="block-layout carousel-layout vstack gap-2 lg:gap-3 panel">
+                                <div class="block-header panel pt-1 border-top">
+                                    <h2 class="h6 ft-tertiary fw-bold ls-0 text-uppercase m-0 text-black dark:text-white">
+                                        Videos</h2>
+                                </div>
+                                <div class="block-content panel">
+                                    <div class="swiper"
+                                        data-uc-swiper="items: 2; gap: 16; dots: .dot-nav; next: .nav-next; prev: .nav-prev; disable-class: d-none;"
+                                        data-uc-swiper-s="items: 3; gap: 24;" data-uc-swiper-l="items: 5; gap: 24;">
+                                        <div class="swiper-wrapper">
+                                            @foreach ($videos as $video)
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <article class="post type-post panel uc-transition-toggle vstack gap-2">
+                                                            <div class="post-media panel overflow-hidden">
+                                                                <div
+                                                                    class="featured-image bg-gray-25 dark:bg-gray-800 ratio ratio-3x2 video-wrapper">
+                                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                                        src="{{ asset('frontend/images/common/img-fallback.png')}}"
+                                                                        data-src="https://img.youtube.com/vi/{{ youtube_id($video->youtube_link) }}/mqdefault.jpg"
+                                                                        alt="{{ $video->title }}" data-uc-img="loading: lazy">
+
+                                                                    <!-- Center Play Icon -->
+                                                                    <div class="video-icon-bg">
+                                                                        <i class="video-icon unicon-play"></i>
+                                                                    </div>
+
+                                                                    <a href="{{ route('news.detail', $video->id) }}"
+                                                                        class="position-cover"></a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="post-header panel vstack gap-1">
+                                                                <h3 class="post-title h6 m-0 text-truncate-2">
+                                                                    <a class="text-none hover:text-primary duration-150"
+                                                                        href="{{ route('news.detail', $breakingNews->slug) }}">{{ $breakingNews->title }}</a>
+                                                                </h3>
+                                                                <div
+                                                                    class="post-meta panel hstack justify-start gap-1 fs-7 ft-tertiary fw-medium text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex z-1 d-none md:d-block">
+                                                                    <div>
+                                                                        <div class="post-date hstack gap-narrow">
+                                                                            <span>{{ $breakingNews->created_at->format('M d, Y') }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>·</div>
+                                                                    <div>
+                                                                        <a href="#post_comment"
+                                                                            class="post-comments text-none hstack gap-narrow">
+                                                                            <i class="icon-narrow unicon-chat"></i>
+                                                                            <span>{{ $breakingNews->comments->count() }}</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="swiper-nav nav-prev position-absolute top-50 start-0 translate-middle btn btn-alt-primary text-black rounded-circle p-0 border shadow-xs w-32px lg:w-40px h-32px lg:h-40px z-1">
+                                        <i class="icon-1 unicon-chevron-left"></i>
+                                    </div>
+                                    <div
+                                        class="swiper-nav nav-next position-absolute top-50 start-100 translate-middle btn btn-alt-primary text-black rounded-circle p-0 border shadow-xs w-32px lg:w-40px h-32px lg:h-40px z-1">
+                                        <i class="icon-1 unicon-chevron-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         <!-- Section end -->
 
         <!-- Section start -->
-        @if ($homeActiveCategory->count() > 0 )
+        @if ($homeActiveCategory->count() > 0)
             <div class="section panel overflow-hidden">
                 <div class="section-outer panel">
                     <div class="container max-w-xl pb-4">
@@ -238,156 +319,156 @@
                             <div class="row child-cols-12 lg:child-cols g-4 lg:g-6 col-match" data-uc-grid>
                                 @foreach ($homeActiveCategory as $homeCategory)
                                     @if ($homeCategory->topNews->count() > '0')
-                                    <div class="lg:col-6">
-                                        <div class="block-layout grid-layout vstack gap-2 lg:gap-3 panel overflow-hidden">
-                                            <div class="block-header panel pt-1 border-top">
-                                                <div class="d-flex" style="justify-content: space-between;">
+                                        <div class="lg:col-6">
+                                            <div class="block-layout grid-layout vstack gap-2 lg:gap-3 panel overflow-hidden">
+                                                <div class="block-header panel pt-1 border-top">
+                                                    <div class="d-flex" style="justify-content: space-between;">
 
-                                                    <!-- LEFT: HEADING -->
-                                                    <h2
-                                                        class="h6 ft-tertiary fw-bold ls-0 text-uppercase m-0 text-black dark:text-white">
-                                                        <a class="hstack gap-1 text-none hover:text-primary duration-150"
-                                                            href="blog-category.html">
-                                                            <span>{{ $homeCategory->category_name }}</span>
-                                                            <i class="icon-1 fw-bold unicon-chevron-right"></i>
+                                                        <!-- LEFT: HEADING -->
+                                                        <h2
+                                                            class="h6 ft-tertiary fw-bold ls-0 text-uppercase m-0 text-black dark:text-white">
+                                                            <a class="hstack gap-1 text-none hover:text-primary duration-150"
+                                                                href="blog-category.html">
+                                                                <span>{{ $homeCategory->category_name }}</span>
+                                                                <i class="icon-1 fw-bold unicon-chevron-right"></i>
+                                                            </a>
+                                                        </h2>
+
+                                                        <!-- RIGHT: VIEW ALL -->
+                                                        <a href="{{ route('category', $homeCategory->slug) }}"
+                                                            class="hstack gap-1 text-primary text-none fs-7 fw-medium">
+                                                            <span>View All</span>
+                                                            <i class="icon-1 unicon-angle-right-b fw-bold"></i>
                                                         </a>
-                                                    </h2>
 
-                                                    <!-- RIGHT: VIEW ALL -->
-                                                    <a href="{{ route('category', $homeCategory->slug) }}"
-                                                        class="hstack gap-1 text-primary text-none fs-7 fw-medium">
-                                                        <span>View All</span>
-                                                        <i class="icon-1 unicon-angle-right-b fw-bold"></i>
-                                                    </a>
-
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="block-content">
-                                                <div class="panel row child-cols-12 md:child-cols g-2 lg:g-4 col-match sep-y"
-                                                    data-uc-grid>
-                                                    {{-- <div class="col-12 md:col-6 order-0 md:order-1">
-                                                        <div>
-                                                            <article
-                                                                class="post type-post panel uc-transition-toggle vstack gap-2 lg:gap-3 h-100 overflow-hidden uc-dark">
-                                                                <div class="post-media panel overflow-hidden h-100">
-                                                                    <div
-                                                                        class="featured-image bg-gray-25 dark:bg-gray-800 h-100 d-none md:d-block">
-                                                                        <canvas class="h-100 w-100"></canvas>
-                                                                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                                                            src="{{ asset('frontend/images/common/img-fallback.png')}}"
-                                                                            data-src="{{ asset('frontend/images/demo-seven/posts/img-04.jpg')}}"
-                                                                            alt="The Importance of Sleep: Tips for Better Rest and Recovery"
-                                                                            data-uc-img="loading: lazy">
-                                                                    </div>
-                                                                    <div
-                                                                        class="featured-image bg-gray-25 dark:bg-gray-800 ratio ratio-16x9 d-block md:d-none">
-                                                                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                                                            src="{{ asset('frontend/images/common/img-fallback.png')}}"
-                                                                            data-src="{{ asset('frontend/images/demo-seven/posts/img-04.jpg')}}"
-                                                                            alt="The Importance of Sleep: Tips for Better Rest and Recovery"
-                                                                            data-uc-img="loading: lazy">
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="position-cover bg-gradient-to-t from-black to-transparent opacity-90">
-                                                                </div>
-                                                                <div
-                                                                    class="post-header panel vstack justify-end items-start gap-1 p-2 sm:p-4 position-cover text-white">
-                                                                    <div
-                                                                        class="post-date hstack gap-narrow fs-7 text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
-                                                                        <span>2h</span>
-                                                                    </div>
-                                                                    <h3
-                                                                        class="post-title h5 lg:h4 m-0 max-w-600px text-white text-truncate-2">
-                                                                        <a class="text-none text-white" href="blog-details.html">The
-                                                                            Importance of Sleep: Tips for Better Rest and
-                                                                            Recovery</a>
-                                                                    </h3>
-                                                                    <div>
+                                                <div class="block-content">
+                                                    <div class="panel row child-cols-12 md:child-cols g-2 lg:g-4 col-match sep-y"
+                                                        data-uc-grid>
+                                                        {{-- <div class="col-12 md:col-6 order-0 md:order-1">
+                                                            <div>
+                                                                <article
+                                                                    class="post type-post panel uc-transition-toggle vstack gap-2 lg:gap-3 h-100 overflow-hidden uc-dark">
+                                                                    <div class="post-media panel overflow-hidden h-100">
                                                                         <div
-                                                                            class="post-meta panel hstack justify-between fs-7 text-white text-opacity-60 mt-1">
-                                                                            <div class="meta">
-                                                                                <div class="hstack gap-2">
-                                                                                    <div>
-                                                                                        <div class="post-author hstack gap-1">
-                                                                                            <a href="page-author.html"
-                                                                                                data-uc-tooltip="Sarah Eddrissi"><img
-                                                                                                    src="{{ asset('frontend/images/avatars/03.png')}}"
-                                                                                                    alt="Sarah Eddrissi"
-                                                                                                    class="w-24px h-24px rounded-circle"></a>
-                                                                                            <a href="page-author.html"
-                                                                                                class="text-black dark:text-white text-none fw-bold">Sarah
-                                                                                                Eddrissi</a>
+                                                                            class="featured-image bg-gray-25 dark:bg-gray-800 h-100 d-none md:d-block">
+                                                                            <canvas class="h-100 w-100"></canvas>
+                                                                            <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                                                src="{{ asset('frontend/images/common/img-fallback.png')}}"
+                                                                                data-src="{{ asset('frontend/images/demo-seven/posts/img-04.jpg')}}"
+                                                                                alt="The Importance of Sleep: Tips for Better Rest and Recovery"
+                                                                                data-uc-img="loading: lazy">
+                                                                        </div>
+                                                                        <div
+                                                                            class="featured-image bg-gray-25 dark:bg-gray-800 ratio ratio-16x9 d-block md:d-none">
+                                                                            <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                                                src="{{ asset('frontend/images/common/img-fallback.png')}}"
+                                                                                data-src="{{ asset('frontend/images/demo-seven/posts/img-04.jpg')}}"
+                                                                                alt="The Importance of Sleep: Tips for Better Rest and Recovery"
+                                                                                data-uc-img="loading: lazy">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="position-cover bg-gradient-to-t from-black to-transparent opacity-90">
+                                                                    </div>
+                                                                    <div
+                                                                        class="post-header panel vstack justify-end items-start gap-1 p-2 sm:p-4 position-cover text-white">
+                                                                        <div
+                                                                            class="post-date hstack gap-narrow fs-7 text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
+                                                                            <span>2h</span>
+                                                                        </div>
+                                                                        <h3
+                                                                            class="post-title h5 lg:h4 m-0 max-w-600px text-white text-truncate-2">
+                                                                            <a class="text-none text-white" href="blog-details.html">The
+                                                                                Importance of Sleep: Tips for Better Rest and
+                                                                                Recovery</a>
+                                                                        </h3>
+                                                                        <div>
+                                                                            <div
+                                                                                class="post-meta panel hstack justify-between fs-7 text-white text-opacity-60 mt-1">
+                                                                                <div class="meta">
+                                                                                    <div class="hstack gap-2">
+                                                                                        <div>
+                                                                                            <div class="post-author hstack gap-1">
+                                                                                                <a href="page-author.html"
+                                                                                                    data-uc-tooltip="Sarah Eddrissi"><img
+                                                                                                        src="{{ asset('frontend/images/avatars/03.png')}}"
+                                                                                                        alt="Sarah Eddrissi"
+                                                                                                        class="w-24px h-24px rounded-circle"></a>
+                                                                                                <a href="page-author.html"
+                                                                                                    class="text-black dark:text-white text-none fw-bold">Sarah
+                                                                                                    Eddrissi</a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <a href="#post_comment"
+                                                                                                class="post-comments text-none hstack gap-narrow">
+                                                                                                <i class="icon-narrow unicon-chat"></i>
+                                                                                                <span>0</span>
+                                                                                            </a>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div>
-                                                                                        <a href="#post_comment"
-                                                                                            class="post-comments text-none hstack gap-narrow">
-                                                                                            <i class="icon-narrow unicon-chat"></i>
-                                                                                            <span>0</span>
-                                                                                        </a>
-                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="actions">
-                                                                                <div class="hstack gap-1"></div>
+                                                                                <div class="actions">
+                                                                                    <div class="hstack gap-1"></div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </article>
-                                                        </div>
-                                                    </div> --}}
-                                                    <div class="order-1 md:order-0">
-                                                        <div class="row child-cols-12 g-2 lg:g-4 sep-x" data-uc-grid>
-                                                            @foreach ($homeCategory->topNews as $topnews)
-                                                                @php
-                                                                    $topNewsimages = json_decode($topnews->images, true); // field name may be different
-                                                                    $topNewsfirstImage = $topNewsimages[0] ?? null;
-                                                                @endphp
-                                                                <div>
-                                                                    <article class="post type-post panel uc-transition-toggle">
-                                                                        <div class="row child-cols g-2 lg:g-3" data-uc-grid>
-                                                                            <div>
-                                                                                <div
-                                                                                    class="post-header panel vstack justify-between gap-1">
-                                                                                    <h3 class="post-title h6 m-0 text-truncate-2">
-                                                                                        <a class="text-none hover:text-primary duration-150"
-                                                                                            href="blog-details.html">{{ $topnews->title }}</a>
-                                                                                    </h3>
+                                                                </article>
+                                                            </div>
+                                                        </div> --}}
+                                                        <div class="order-1 md:order-0">
+                                                            <div class="row child-cols-12 g-2 lg:g-4 sep-x" data-uc-grid>
+                                                                @foreach ($homeCategory->topNews as $topnews)
+                                                                    @php
+                                                                        $topNewsimages = json_decode($topnews->images, true); // field name may be different
+                                                                        $topNewsfirstImage = $topNewsimages[0] ?? null;
+                                                                    @endphp
+                                                                    <div>
+                                                                        <article class="post type-post panel uc-transition-toggle">
+                                                                            <div class="row child-cols g-2 lg:g-3" data-uc-grid>
+                                                                                <div>
                                                                                     <div
-                                                                                        class="post-date hstack gap-narrow fs-7 text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
-                                                                                        <span>{{ $topnews->created_at->diffForHumans() }}</span>
+                                                                                        class="post-header panel vstack justify-between gap-1">
+                                                                                        <h3 class="post-title h6 m-0 text-truncate-2">
+                                                                                            <a class="text-none hover:text-primary duration-150"
+                                                                                                href="blog-details.html">{{ $topnews->title }}</a>
+                                                                                        </h3>
+                                                                                        <div
+                                                                                            class="post-date hstack gap-narrow fs-7 text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
+                                                                                            <span>{{ $topnews->created_at->diffForHumans() }}</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-auto">
+                                                                                    <div
+                                                                                        class="post-media panel overflow-hidden max-w-72px min-w-72px">
+                                                                                        <div
+                                                                                            class="featured-image bg-gray-25 dark:bg-gray-800 ratio ratio-1x1">
+                                                                                            <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                                                                src="{{ asset('frontend/images/common/img-fallback.png')}}"
+                                                                                                data-src="{{ $topNewsfirstImage ? asset($topNewsfirstImage) : '' }}"
+                                                                                                alt="The Future of Sustainable Living: Driving Eco-Friendly Lifestyles"
+                                                                                                data-uc-img="loading: lazy">
+                                                                                        </div>
+                                                                                        <a href="blog-details.html"
+                                                                                            class="position-cover"></a>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-auto">
-                                                                                <div
-                                                                                    class="post-media panel overflow-hidden max-w-72px min-w-72px">
-                                                                                    <div
-                                                                                        class="featured-image bg-gray-25 dark:bg-gray-800 ratio ratio-1x1">
-                                                                                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                                                                            src="{{ asset('frontend/images/common/img-fallback.png')}}"
-                                                                                            data-src="{{ $topNewsfirstImage ? asset($topNewsfirstImage) : '' }}"
-                                                                                            alt="The Future of Sustainable Living: Driving Eco-Friendly Lifestyles"
-                                                                                            data-uc-img="loading: lazy">
-                                                                                    </div>
-                                                                                    <a href="blog-details.html"
-                                                                                        class="position-cover"></a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </article>
-                                                                </div>
-                                                            @endforeach
+                                                                        </article>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
                                                         </div>
-                                                    </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endif
                                 @endforeach
                             </div>
@@ -689,16 +770,16 @@
                                         <!-- Slides thumbs -->
                                         <div class="swiper swiper-thumbs swiper-thumbs-progress rounded order-2"
                                             data-uc-swiper="items: 2;
-                                                                                                                                                                                gap: 4; 
-                                                                                                                                                                                disable-class: last-slide;"
+                                                                                                                                                                                                gap: 4; 
+                                                                                                                                                                                                disable-class: last-slide;"
                                             data-uc-swiper-s="items: auto;
-                                                                                                                                                                                direction: vertical;
-                                                                                                                                                                                autoHeight: true;
-                                                                                                                                                                                mousewheel: true;
-                                                                                                                                                                                freeMode: false;
-                                                                                                                                                                                watchSlidesVisibility: true;
-                                                                                                                                                                                watchSlidesProgress: true;
-                                                                                                                                                                                watchOverflow: true">
+                                                                                                                                                                                                direction: vertical;
+                                                                                                                                                                                                autoHeight: true;
+                                                                                                                                                                                                mousewheel: true;
+                                                                                                                                                                                                freeMode: false;
+                                                                                                                                                                                                watchSlidesVisibility: true;
+                                                                                                                                                                                                watchSlidesProgress: true;
+                                                                                                                                                                                                watchOverflow: true">
                                             <div class="swiper-wrapper md:flex-1">
                                                 <div class="swiper-slide overflow-hidden rounded min-h-64px lg:min-h-100px">
                                                     <div class="swiper-slide-progress position-cover z-0">

@@ -1,9 +1,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ optional($settings)->meta_title }}</title>
-  <meta name="description" content="{{ optional($settings)->meta_description }}">
-  <meta name="keywords" content="{{ optional($settings)->meta_keywords }}">
+  <title>
+    @yield('meta_title', optional($settings)->meta_title)
+  </title>
+
+  <meta name="description" content="@yield('meta_description', optional($settings)->meta_description)">
+
+  <meta name="keywords" content="@yield('meta_keywords', optional($settings)->meta_keywords)">
+
   <meta name="theme-color" content="#2757fd">
   <link rel="canonical" href="{{ url()->current() }}">
   <link rel="icon" type="image/png" href="{{ asset(optional($settings)->favicon) }}">
@@ -45,4 +50,5 @@
 
   <!-- include scripts -->
   <script src="{{ asset('frontend/js/uni-core/js/uni-core-bundle.min.js')}}"></script>
+  <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
 </head>

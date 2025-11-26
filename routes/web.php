@@ -39,6 +39,10 @@ Route::prefix('admin')->group(function () {
         Route::get('settings/{id?}', [SettingController::class, 'index'])->name('admin.settings');
         Route::post('settings-save', [SettingController::class, 'update'])->name('admin.settings.save');
         Route::get('video-list', [VideoController::class, 'index'])->name('admin.video.list');
+        Route::get('video-add/{id?}', [VideoController::class, 'videoAddIndex'])->name('admin.video.add');
+        Route::post('video-save', [VideoController::class, 'storeOrUpdate'])->name('admin.video.store-or-update');
+        Route::post('video-delete', [VideoController::class, 'delete'])->name('admin.video.delete');
+
 
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');
     });

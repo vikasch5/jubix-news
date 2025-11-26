@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Setting;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrapFive();
         View::composer('frontend.*', function ($view) {
             $categories = Category::with('subCategories')
                 ->where('status', '1')
