@@ -43,4 +43,3 @@ Route::prefix('admin')->group(function () {
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');
     });
 });
-w
