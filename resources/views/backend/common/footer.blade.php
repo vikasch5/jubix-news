@@ -1,10 +1,10 @@
 <footer class="footer mt-auto py-3 bg-white text-center">
     <div class="container">
         <span class="text-muted"> Copyright © <span id="year"></span> <a href="javascript:void(0);"
-                class="text-dark fw-medium">Zynix</a>.
-            Designed with <span class="bi bi-heart-fill text-danger"></span> by <a href="https://spruko.com/"
+                class="text-dark fw-medium">Bhatat News</a>.
+            Designed with <span class="bi bi-heart-fill text-danger"></span> by <a href=""
                 target="_blank">
-                <span class="fw-medium text-primary">Spruko</span>
+                <span class="fw-medium text-primary">Vikas</span>
             </a> All
             rights
             reserved
@@ -49,7 +49,8 @@
 
 <!-- Analytics Dashboard -->
 {{--
-<link rel="modulepreload" href="{{ asset('backend/assets/analytics-dashboard-Dlvq2xMh.js')}}" /> --}}
+<link rel="modulepreload" href="{{ ass
+et('backend/assets/analytics-dashboard-Dlvq2xMh.js')}}" /> --}}
 {{--
 <script type="module" src="{{ asset('backend/assets/analytics-dashboard-Dlvq2xMh.js')}}"></script> --}}
 

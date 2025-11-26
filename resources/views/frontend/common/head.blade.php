@@ -1,14 +1,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ $settings->meta_title }}</title>
-  <meta name="description" content="{{ $settings->meta_description }}">
-  <meta name="keywords" content="{{ $settings->meta_keywords }}">
+  <title>{{ optional($settings)->meta_title }}</title>
+  <meta name="description" content="{{ optional($settings)->meta_description }}">
+  <meta name="keywords" content="{{ optional($settings)->meta_keywords }}">
   <meta name="theme-color" content="#2757fd">
   <link rel="canonical" href="{{ url()->current() }}">
-  <link rel="icon" type="image/png" href="{{ asset($settings->favicon) }}">
-  <link rel="shortcut icon" href="{{ asset($settings->favicon) }}" type="image/png">
-  <link rel="apple-touch-icon" href="{{ asset($settings->favicon) }}">
+  <link rel="icon" type="image/png" href="{{ asset(optional($settings)->favicon) }}">
+  <link rel="shortcut icon" href="{{ asset(optional($settings)->favicon) }}" type="image/png">
+  <link rel="apple-touch-icon" href="{{ asset(optional($settings)->favicon) }}">
   <!-- preload head styles -->
   <link rel="preload" href="{{ asset('frontend/css/unicons.min.css')}}" as="style">
   <link rel="preload" href="{{ asset('frontend/css/swiper-bundle.min.css')}}" as="style">

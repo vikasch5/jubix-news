@@ -32,7 +32,7 @@
         <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
             <div class="uc-logo">
                 <a href="{{ route('home') }}" class="h5 text-none text-gray-900 dark:text-white">
-                    <img class="w-32px" src="{{ asset($settings->logo) }}" alt="Bharat News" data-uc-svg>
+                    <img class="w-32px" src="{{ asset(optional($settings)->logo) }}" alt="Bharat News" data-uc-svg>
                 </a>
             </div>
             <button
@@ -589,7 +589,7 @@
                         <div class="uc-logo d-block md:d-none">
                             <a href="{{ route('home') }}">
                                 <img class="logo-img w-100px text-dark dark:text-white"
-                                    src="{{ asset($settings->logo) }}" alt="News5" data-uc-svg>
+                                    src="{{ asset(optional($settings)->logo) }}" alt="News5" data-uc-svg>
                             </a>
                         </div>
                     </div>
@@ -597,7 +597,7 @@
                         <div class="uc-logo d-none md:d-block">
                             <a href="{{ route('home') }}">
                                 <img class="logo-img w-150px text-dark dark:text-white"
-                                    src="{{ asset($settings->logo) }}" alt="News5" data-uc-svg>
+                                    src="{{ asset(optional($settings)->logo) }}" alt="News5" data-uc-svg>
                             </a>
                         </div>
                     </div>

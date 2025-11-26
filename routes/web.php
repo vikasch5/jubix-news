@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryContoller;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\VideoController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,9 @@ Route::prefix('admin')->group(function () {
         Route::get('comment-list', [NewsController::class, 'commentList'])->name('admin.comment.list');
         Route::get('settings/{id?}', [SettingController::class, 'index'])->name('admin.settings');
         Route::post('settings-save', [SettingController::class, 'update'])->name('admin.settings.save');
+        Route::get('video-list', [VideoController::class, 'index'])->name('admin.video.list');
 
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');
     });
 });
+w
