@@ -65,6 +65,13 @@
                         </li>
                     </ul>
                 </li>
+                <li class="slide">
+                    <a href="{{ route('admin.video.list') }}"
+                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.video.list', 'admin.video.add']) ? 'active' : '' }}">
+                        <i class="side-menu__icon ri-video-line"></i>
+                        <span class="side-menu__label">Videos</span>
+                    </a>
+                </li>
 
                 <li class="slide">
                     <a href="{{ route('admin.settings') }}"

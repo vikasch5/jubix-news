@@ -32,7 +32,7 @@
         <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
             <div class="uc-logo">
                 <a href="{{ route('home') }}" class="h5 text-none text-gray-900 dark:text-white">
-                    <img class="w-32px" src="{{ asset(optional($settings)->logo) }}" alt="Bharat News" data-uc-svg>
+                    <img class="" style="width: auto !important;height: 60px;" src="{{ asset(optional($settings)->logo) }}" alt="Bharat News" data-uc-svg>
                 </a>
             </div>
             <button
@@ -50,7 +50,7 @@
                 </span>
             </form>
             <ul class="nav-y gap-narrow fw-bold fs-5" data-uc-nav>
-    <li class="uc-parent">
+    <li>
         <a href="{{ route('home') }}">Home</a>
     </li>
 
@@ -452,7 +452,7 @@
 </div>
 
 <!--  GDPR modal -->
-<div id="uc-gdpr-notification" class="uc-gdpr-notification uc-notification uc-notification-bottom-left lg:m-2">
+{{-- <div id="uc-gdpr-notification" class="uc-gdpr-notification uc-notification uc-notification-bottom-left lg:m-2">
     <div class="uc-notification-message">
         <a id="uc-close-gdpr-notification" class="uc-notification-close" data-uc-close></a>
         <h2 class="h5 ft-primary fw-bold -ls-1 m-0">GDPR Compliance</h2>
@@ -462,18 +462,18 @@
                 class="uc-link text-underline">Terms of Service</a>.</p>
         <button class="btn btn-sm btn-primary" id="uc-accept-gdpr">Accept</button>
     </div>
-</div>
+</div> --}}
 
 <!--  Bottom Actions Sticky -->
 <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
-    <div class="darkmode-trigger cstack w-40px h-40px rounded-circle text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
+    {{-- <div class="darkmode-trigger cstack w-40px h-40px rounded-circle text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
         data-darkmode-toggle="">
         <label class="switch">
             <span class="sr-only">Dark mode toggle</span>
             <input type="checkbox">
             <span class="slider fs-5"></span>
         </label>
-    </div>
+    </div> --}}
     <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded-circle" href="to_top.html" data-uc-backtotop>
         <i class="icon-2 unicon-chevron-up"></i>
     </a>
