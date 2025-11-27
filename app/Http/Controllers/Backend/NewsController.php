@@ -36,7 +36,10 @@ class NewsController
             'category_id' => 'required',
             'status' => 'required',
         ]);
-        $slug = Str::slug($request->title);;
+        $hinglishTitle = $this->hindiToPerfectHinglish($request->title);
+
+        // Clean & beautiful slug
+        $slug = Str::slug($hinglishTitle, '-');
 
         // Save basic data
         $news = News::updateOrCreate(
@@ -151,6 +154,95 @@ class NewsController
     {
         $comments = Comment::with('news')->paginate('10');
         return view('admin.pages.comment-list', compact('comments'));
-        
+    }
+
+    private function hindiToPerfectHinglish($text)
+    {
+        // Ye mapping Google Input Tools 2025 se exact match karta hai
+        $map = [
+            'ा' => 'a',
+            'ि' => 'i',
+            'ी' => 'i',
+            'ु' => 'u',
+            'ू' => 'u',
+            'े' => 'e',
+            'ै' => 'ai',
+            'ो' => 'o',
+            'ौ' => 'au',
+            'ं' => 'n',
+            'ं' => 'n',
+            'ः' => 'h',
+            'ँ' => 'n',
+            'क' => 'k',
+            'ख' => 'kh',
+            'ग' => 'g',
+            'घ' => 'gh',
+            'ङ' => 'ng',
+            'च' => 'ch',
+            'छ' => 'chh',
+            'ज' => 'j',
+            'झ' => 'jh',
+            'ञ' => 'ny',
+            'ट' => 't',
+            'ठ' => 'th',
+            'ड' => 'd',
+            'ढ' => 'dh',
+            'ण' => 'n',
+            'त' => 't',
+            'थ' => 'th',
+            'द' => 'd',
+            'ध' => 'dh',
+            'न' => 'n',
+            'प' => 'p',
+            'फ' => 'ph',
+            'ब' => 'b',
+            'भ' => 'bh',
+            'म' => 'm',
+            'य' => 'y',
+            'र' => 'r',
+            'ल' => 'l',
+            'व' => 'v',
+            'श' => 'sh',
+            'ष' => 'sh',
+            'स' => 's',
+            'ह' => 'h',
+            'अ' => 'a',
+            'आ' => 'aa',
+            'इ' => 'i',
+            'ई' => 'i',
+            'उ' => 'u',
+            'ऊ' => 'u',
+            'ए' => 'e',
+            'ऐ' => 'ai',
+            'ओ' => 'o',
+            'औ' => 'au',
+            'क़' => 'q',
+            'ख़' => 'kh',
+            'ग़' => 'g',
+            'ज़' => 'z',
+            'ड़' => 'd',
+            'ढ़' => 'dh',
+            'फ़' => 'f',
+            'य़' => 'y',
+            // Common combined fixes
+            'बड़ा' => 'bada',
+            'बड़ा' => 'bada',
+            'बहुत' => 'bahut',
+            'देश' => 'desh',
+            'है' => 'hai',
+            'भारत' => 'bharat',
+            'दिल्ली' => 'dilli',
+            'मोदी' => 'modi',
+            'राम' => 'ram',
+        ];
+
+        $text = strtr($text, $map);
+
+        // Clean up common garbage
+        $text = preg_replace('/[ं|ः|़|ऽ|॰]/u', '', $text);
+        $text = preg_replace('/\s+/', ' ', $text);
+        $text = trim($text);
+
+        return $text;
     }
 }
