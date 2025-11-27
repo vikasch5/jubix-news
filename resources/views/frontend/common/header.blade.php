@@ -32,7 +32,8 @@
         <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
             <div class="uc-logo">
                 <a href="{{ route('home') }}" class="h5 text-none text-gray-900 dark:text-white">
-                    <img class="" style="width: auto !important;height: 60px;" src="{{ asset(optional($settings)->logo) }}" alt="Bharat News" data-uc-svg>
+                    <img class="" style="width: auto !important;height: 60px;"
+                        src="{{ asset(optional($settings)->logo) }}" alt="Bharat News" data-uc-svg>
                 </a>
             </div>
             <button
@@ -50,61 +51,72 @@
                 </span>
             </form>
             <ul class="nav-y gap-narrow fw-bold fs-5" data-uc-nav>
-    <li>
-        <a href="{{ route('home') }}">Home</a>
-    </li>
+                <li>
+                    <a href="{{ route('home') }}">Home</a>
+                </li>
 
-    @foreach ($categories as $category)
-        <li {{ $category->subCategories->count() > 0 ? 'class="uc-parent"' : ''}}>
-            <a href="{{ $category->subCategories->count() == '0' ? route('category', $category->slug) : '#' }}">{{ $category->category_name }}</a>
-
-            @if($category->subCategories->count() > 0)
-                <ul class="uc-nav-sub" data-uc-nav>
-                    @foreach ($category->subCategories as $subcategory)
-                        <li>
-                            <a href="{{ route('category', [$category->slug, $subcategory->slug]) }}">
-                                {{ $subcategory->sub_category_name }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-
-        </li>
-    @endforeach
-</ul>
+                @foreach ($categories as $category)
+                    <li class="{{ $category->subCategories->count() > 0 ? 'uc-parent' : '' }}">
+                        <a href="{{ $category->subCategories->count() == 0 ? route('category', $category->slug) : '#' }}">
+                            {{ $category->category_name }}
+                        </a>
+                        @if($category->subCategories->count() > 0)
+                            <ul class="uc-nav-sub" data-uc-nav>
+                                @foreach ($category->subCategories as $subcategory)
+                                    <li>
+                                        <a href="{{ route('category', [$category->slug, $subcategory->slug]) }}">
+                                            {{ $subcategory->sub_category_name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
+                <li>
+                    <a href="{{ route('videos.list') }}">Videos</a>
+                </li>
+            </ul>
 
             <ul class="social-icons nav-x mt-4">
                 <li>
-                    @php
-                        $shareUrl = route('home');
-                        $shareTitle = env('APP_NAME');
-                    @endphp
-                    <a
-                        href="https://www.linkedin.com/shareArticle?mini=true&url={{ $shareUrl }}&title={{ $shareTitle }}"><i
-                            class="icon icon-2 unicon-logo-linkedin"></i></a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}"><i
-                            class="icon icon-2 unicon-logo-facebook"></i></a>
-                    <a href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareTitle }}"><i
-                            class="icon icon-2 unicon-logo-x-filled"></i></a>
-                    <a href="https://www.instagram.com/?url={{ $shareUrl }}"><i
-                            class="icon icon-2 unicon-logo-instagram"></i></a>
-                    <a href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}"><i
-                            class="fa-brands fa-whatsapp icon-2 icon"></i></a>
+                    @if(!empty($settings->linkedin))
+                        <a href="{{ $settings->linkedin }}" target="_blank">
+                            <i class="icon icon-2 unicon-logo-linkedin"></i>
+                        </a>
+                    @endif
+
+                    {{-- Facebook --}}
+                    @if(!empty($settings->facebook))
+                        <a href="{{ $settings->facebook }}" target="_blank">
+                            <i class="icon icon-2 unicon-logo-facebook"></i>
+                        </a>
+                    @endif
+
+                    {{-- Twitter --}}
+                    @if(!empty($settings->twitter))
+                        <a href="{{ $settings->twitter }}" target="_blank">
+                            <i class="icon icon-2 unicon-logo-x-filled"></i>
+                        </a>
+                    @endif
+
+                    {{-- Instagram --}}
+                    @if(!empty($settings->instagram))
+                        <a href="{{ $settings->instagram }}" target="_blank">
+                            <i class="icon icon-2 unicon-logo-instagram"></i>
+                        </a>
+                    @endif
+
+                    {{-- WhatsApp --}}
+                    @if(!empty($settings->whatsapp))
+                        <a href="{{ $settings->whatsapp }}" target="_blank">
+                            <i class="fa-brands fa-whatsapp icon-2 icon"></i>
+                        </a>
+                    @endif
 
                 </li>
             </ul>
-            <div class="py-2 hstack gap-2 mt-4 bg-white dark:bg-gray-900" data-uc-sticky="position: bottom">
-                <div class="vstack gap-1">
-                    <span class="fs-7 opacity-60">Select theme:</span>
-                    <div class="darkmode-trigger" data-darkmode-switch="">
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider fs-5"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
@@ -466,7 +478,8 @@
 
 <!--  Bottom Actions Sticky -->
 <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
-    {{-- <div class="darkmode-trigger cstack w-40px h-40px rounded-circle text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
+    {{-- <div
+        class="darkmode-trigger cstack w-40px h-40px rounded-circle text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
         data-darkmode-toggle="">
         <label class="switch">
             <span class="sr-only">Dark mode toggle</span>
@@ -566,6 +579,10 @@
                                     @endif
                                 </li>
                             @endforeach
+
+                            <li>
+                                <a href="{{ route('videos.list') }}">Videos</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

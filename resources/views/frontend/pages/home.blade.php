@@ -268,7 +268,7 @@
                                                             <div class="post-header panel vstack gap-1">
                                                                 <h3 class="post-title h6 m-0 text-truncate-2">
                                                                     <a class="text-none hover:text-primary duration-150"
-                                                                        href="{{ route('news.detail', $breakingNews->slug) }}">{{ $breakingNews->title }}</a>
+                                                                        href="{{ route('video.detail', $video->slug) }}">{{ $video->title }}</a>
                                                                 </h3>
                                                                 <div
                                                                     class="post-meta panel hstack justify-start gap-1 fs-7 ft-tertiary fw-medium text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex z-1 d-none md:d-block">
@@ -281,8 +281,8 @@
                                                                     <div>
                                                                         <a href="#post_comment"
                                                                             class="post-comments text-none hstack gap-narrow">
-                                                                            <i class="icon-narrow unicon-chat"></i>
-                                                                            <span>{{ $breakingNews->comments->count() }}</span>
+                                                                            <i class="icon-narrow unicon-view"></i>
+                                                                            <span>0</span>
                                                                         </a>
                                                                     </div>
                                                                 </div>

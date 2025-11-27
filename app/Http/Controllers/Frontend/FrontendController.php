@@ -24,13 +24,13 @@ class FrontendController
             ->orderBy('created_at', 'desc')
             ->take(10)
             ->get();
-            
+
         $allHighlights = News::with('comments')->where([['status', 'active'], ['is_highlight', '1']])
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get();
         $videos = Video::where('status', '1')->get();
-        return view('frontend.pages.home', compact('categories', 'allbreakingNews', 'homeActiveCategory', 'alllatestNews', 'allHighlights','videos'));
+        return view('frontend.pages.home', compact('categories', 'allbreakingNews', 'homeActiveCategory', 'alllatestNews', 'allHighlights', 'videos'));
     }
 
     public function categoryIndex($catSlug = null, $subCatSlug = null)
@@ -71,5 +71,22 @@ class FrontendController
         ]);
 
         return response()->json(['message' => 'Comment saved']);
+    }
+
+    public function videoList()
+    {
+        $videos = Video::where('status', '1')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+        return view('frontend.pages.videos', compact('videos'));
+    }
+    public function videoDetail($slug)
+    {
+        $video = Video::where('slug', $slug)->firstOrFail();
+        $recent_videos = Video::where('status', '1')
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+        return view('frontend.pages.video-detail', compact('video', 'recent_videos'));
     }
 }

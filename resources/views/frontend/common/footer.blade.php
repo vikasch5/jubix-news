@@ -57,12 +57,12 @@
                         {{-- WhatsApp --}}
                         @if(!empty($settings->whatsapp))
                             <li>
-                                <a href="https://wa.me/{{ $settings->whatsapp }}" target="_blank"
+                                <a href="{{ $settings->whatsapp }}" target="_blank"
                                 class="hover:text-gray-900 dark:hover:text-white duration-150">
                                     <i class="fa-brands fa-whatsapp icon-2 icon"></i>
                                 </a>
-        </li>
-    @endif
+                            </li>
+                        @endif
                                 </ul>
                                 <div class="vr"></div>
                                 <div class="d-inline-block">
