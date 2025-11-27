@@ -260,7 +260,7 @@
                                                                         <i class="video-icon unicon-play"></i>
                                                                     </div>
 
-                                                                    <a href="{{ route('news.detail', $video->id) }}"
+                                                                    <a href="{{ route('video.detail', $video->slug) }}"
                                                                         class="position-cover"></a>
                                                                 </div>
 
