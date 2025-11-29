@@ -16,6 +16,9 @@ Route::get('/news/{slug}', [FrontendController::class, 'newsDetail'])->name('new
 Route::post('/comments/store', [FrontendController::class, 'v'])->name('comments.store');
 Route::get('/video/{slug}', [FrontendController::class, 'videoDetail'])->name('video.detail');
 Route::get('videos', [FrontendController::class, 'videoList'])->name('videos.list');
+Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
+Route::get('terms-conditions', [FrontendController::class, 'termsConditions'])->name('terms.conditions');
+Route::get('search/{param}/{page?}', [FrontendController::class, 'search'])->name('search');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login.form');

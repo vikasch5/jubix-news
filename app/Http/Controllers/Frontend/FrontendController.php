@@ -89,4 +89,24 @@ class FrontendController
             ->get();
         return view('frontend.pages.video-detail', compact('video', 'recent_videos'));
     }
+
+    public function privacyPolicy()
+    {
+        return view('frontend.pages.privacy-policy');
+    }
+    public function termsConditions()
+    {
+        return view('frontend.pages.terms-condition');
+    }
+
+    public function search($param, $page = 1)
+    {
+         $search_results = News::where('status', 'active')
+        ->where(function ($query) use ($param) {
+            $query->where('title', 'like', '%' . $param . '%')
+                  ->orWhere('description', 'like', '%' . $param . '%');
+        })
+        ->paginate(10, ['*'], 'page', $page);
+        return view('frontend.pages.search-results', compact('search_results', 'param'));
+    }
 }
