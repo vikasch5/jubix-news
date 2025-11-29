@@ -57,8 +57,8 @@
 
                                     <!-- Category Slug -->
                                     <div class="col-md-4 mb-3">
-                                        <label class="form-label">Slug</label>
-                                        <input type="text" name="slug" class="form-control required"
+                                        <label class="form-label">Slug (Auto-generated if blank)</label>
+                                        <input type="text" name="slug" class="form-control"
                                             value="{{ optional($category)->slug }}" placeholder="Slug">
                                         @error('slug')
                                             <span class="text-danger">{{ $message }}</span>
@@ -84,7 +84,7 @@
                                             <option value="1" @selected(optional($category)->show_on_home == 1)>Yes</option>
                                         </select>
                                         @error('status')
-                                            <span class="text-danger">{{ $message }}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div> --}}
 

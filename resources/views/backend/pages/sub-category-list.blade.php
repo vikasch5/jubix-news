@@ -23,6 +23,7 @@
                                         <tr>
                                             <th scope="col" class="text-center">S.No</th>
                                             <th scope="col">Category Name</th>
+                                            <th scope="col">Parent Category Name</th>
                                             <th scope="col">Slug</th>
                                             <th scope="col">Show on Homepage</th>
                                             <th scope="col">Status</th>
@@ -46,6 +47,13 @@
                                                     <div class="d-flex align-items-center">
                                                         <span class="ms-2">
                                                             {{ $category->sub_category_name }}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="ms-2">
+                                                            {{ $category->category->category_name }}
                                                         </span>
                                                     </div>
                                                 </td>

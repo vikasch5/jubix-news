@@ -19,4 +19,9 @@ class SubCategory extends Model
         'description',
         'show_on_home'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

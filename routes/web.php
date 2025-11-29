@@ -25,6 +25,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     Route::middleware('auth')->group(function () {
+        Route::get('edit-profile', [AuthController::class, 'editProfile'])->name('edit.profile.page');
+        Route::post('update-profile_photo', [AuthController::class, 'updateProfilePhoto'])->name('user.updateProfilePhoto');
+        Route::post('update-password', [AuthController::class, 'updatePassword'])->name('user.updatePassword');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::get('category-list', [CategoryContoller::class, 'index'])->name('admin.category.index');
         Route::get('category-add/{id?}', [CategoryContoller::class, 'categoryAddIndex'])->name('admin.category.add');

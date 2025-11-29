@@ -66,7 +66,9 @@
                     data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                     <div class="d-flex align-items-center">
                         <div class="me-xl-2 me-0">
-                            <img src="{{ asset('backend/assets/images/faces/2.jpg')}}" alt="img"
+                            <img src="{{ Auth::user()->profile_photo
+    ? asset('storage/'.Auth::user()->profile_photo)
+    : asset('backend/assets/images/faces/2.jpg') }}" alt="Profile Photo"
                                 class="avatar avatar-sm avatar-rounded">
                         </div>
                         <div class="d-xl-block d-none lh-1">
@@ -81,7 +83,7 @@
                         <div class="py-2 px-3 text-center"> <span class="fw-semibold"> {{ auth()->user()->name }}
                             </span> <span class="d-block fs-12 text-muted">Admin</span> </div>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="profile.html"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('edit.profile.page') }}"><i
                                 class="ti ti-user text-primary me-2 fs-16"></i>Profile</a>
                     </li>
                     <li class="py-2 px-3"><a class="btn btn-primary btn-sm w-100" href="{{ route('admin.logout') }}">Log

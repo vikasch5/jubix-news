@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('category_id')->unique();
+            $table->string('category_id')->default('0');
             $table->string('sub_category_name');
             $table->string('slug')->unique();
 

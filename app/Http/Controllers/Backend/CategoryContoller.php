@@ -111,7 +111,7 @@ class CategoryContoller
 
     public function subCategoryIndex()
     {
-        $categories = SubCategory::paginate('10');
+        $categories = SubCategory::with('category')->paginate('10');
         return view('backend.pages.sub-category-list', compact('categories'));
     }
 
@@ -144,7 +144,7 @@ class CategoryContoller
         ]);
 
         // Auto-generate slug if empty
-        $slug = $request->slug ?: Str::slug($request->category_name);
+        $slug = Str::slug($request->slug) ?: Str::slug($request->category_name);
 
         // ---------------- DIMENSION CHECK ----------------
         // if ($request->hasFile('category_image')) {
