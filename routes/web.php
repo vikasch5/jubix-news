@@ -57,7 +57,7 @@ Route::prefix('admin')->group(function () {
         Route::get('ads-add/{id?}', [AdsController::class, 'addAdsIndex'])->name('admin.ads.add');
         Route::get('ads-list', [AdsController::class, 'index'])->name('admin.ads.list');
         Route::post('ads-save', [AdsController::class, 'storeOrUpdate'])->name('admin.ads.save');
-        Route::post('ads-delete', [AdsController::class, 'storeOrUpdate'])->name('admin.ads.delete');
+        Route::post('ads-delete', [AdsController::class, 'deleteAds'])->name('admin.ads.delete');
         Route::post('ads-img-delete', [AdsController::class, 'deleteImage'])->name('admin.ads.delete-image');
 
 

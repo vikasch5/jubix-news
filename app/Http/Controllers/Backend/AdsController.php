@@ -94,4 +94,24 @@ class AdsController
             "message" => "Image deleted successfully!"
         ]);
     }
+
+    public function deleteAds(request $request)
+    {
+        $ads = Ads::findOrFail($request->id);
+
+        // delete images from server
+        $images = $ads->images ? json_decode($ads->images, true) : [];
+        foreach ($images as $img) {
+            if (file_exists(public_path($img))) {
+                @unlink(public_path($img));
+            }
+        }
+
+        $ads->delete();
+
+        return response()->json([
+            "success" => true,
+            "message" => "Ads deleted successfully!"
+        ]);
+    }
 }

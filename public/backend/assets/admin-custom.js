@@ -106,7 +106,7 @@ $(document).on('click', '.deleteRecord', function () {
 
     Swal.fire({
         title: 'Are you sure?',
-        text: 'Do you want to delete this course?',
+        text: 'Do you want to delete this record?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, Delete',
@@ -179,7 +179,7 @@ $('#category_id').on('change', function () {
 
     if (categoryID) {
         $.ajax({
-            url: url+'/' + categoryID,
+            url: url + '/' + categoryID,
             type: 'GET',
             dataType: 'json',
             success: function (response) {
