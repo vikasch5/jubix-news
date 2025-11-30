@@ -83,7 +83,7 @@
 
                     <ul class="slide-menu child1">
                          <li class="slide">
-                            <a href="{{ route('admin.category.list') }}"
+                            <a href="{{ route('admin.ads.list') }}"
                                 class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.ads.list', 'admin.ads.add']) ? 'active' : '' }}">
                                 Normal Ads
                             </a>
