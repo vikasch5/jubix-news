@@ -109,4 +109,9 @@ class FrontendController
         ->paginate(10, ['*'], 'page', $page);
         return view('frontend.pages.search-results', compact('search_results', 'param'));
     }
+
+    public function contactUs()
+    {
+        return view('frontend.pages.contact-us');
+    }
 }

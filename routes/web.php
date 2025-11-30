@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdsController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\CategoryContoller;
 // use App\Http\Controllers\Backend\CategoryContoller;
@@ -19,6 +20,8 @@ Route::get('videos', [FrontendController::class, 'videoList'])->name('videos.lis
 Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 Route::get('terms-conditions', [FrontendController::class, 'termsConditions'])->name('terms.conditions');
 Route::get('search/{param}/{page?}', [FrontendController::class, 'search'])->name('search');
+Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('contact.us');
+Route::get('contact-form-store', [FrontendController::class, 'contactUsStore'])->name('contact.store');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login.form');
@@ -50,6 +53,12 @@ Route::prefix('admin')->group(function () {
         Route::get('video-add/{id?}', [VideoController::class, 'videoAddIndex'])->name('admin.video.add');
         Route::post('video-save', [VideoController::class, 'storeOrUpdate'])->name('admin.video.store-or-update');
         Route::post('video-delete', [VideoController::class, 'delete'])->name('admin.video.delete');
+
+        Route::get('ads-add/{id?}', [AdsController::class, 'addAdsIndex'])->name('admin.ads.add');
+        Route::get('ads-list', [AdsController::class, 'index'])->name('admin.ads.list');
+        Route::post('ads-save', [AdsController::class, 'storeOrUpdate'])->name('admin.ads.save');
+        Route::post('ads-delete', [AdsController::class, 'storeOrUpdate'])->name('admin.ads.delete');
+        Route::post('ads-img-delete', [AdsController::class, 'deleteImage'])->name('admin.ads.delete-image');
 
 
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');

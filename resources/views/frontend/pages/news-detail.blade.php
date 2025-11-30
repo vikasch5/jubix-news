@@ -32,6 +32,35 @@
             /* adjust position */
         }
     </style>
+    {{-- <style>
+        @media print {
+
+            body {
+                width: 997px !important;
+            }
+
+            /* Show header on first page only */
+            header {
+                width: 997px !important;
+                display: block;
+                position: running(header);
+            }
+
+            /* Place header only on the first page */
+            @page: first {
+                margin-top: 50mm;
+                /* adjust as needed */
+            }
+
+            @page {
+                @top-center {
+                    content: none;
+                    /* No header on other pages */
+                }
+            }
+        }
+    </style> --}}
+
     <div id="wrapper" class="wrap overflow-hidden-x">
         <div class="breadcrumbs panel z-1 py-2 bg-gray-25 dark:bg-gray-100 dark:bg-opacity-5 dark:text-white">
             <div class="container max-w-xl">
@@ -45,7 +74,7 @@
             </div>
         </div>
 
-        <article class="post type-post single-post py-4 lg:py-6 xl:py-9">
+        <article class="post type-post single-post py-4 lg:py-6 xl:py-9  NewsSection">
             <div class="container max-w-xl">
                 <div class="post-header">
                     <div class="panel vstack gap-4 md:gap-6 xl:gap-8 text-center">
@@ -82,6 +111,15 @@
                                         href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}"><i
                                             class="fa-brands fa-whatsapp icon-1"></i></a>
                                 </li>
+                                <li>
+                                    <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px 
+                          text-dark dark:text-white dark:border-white hover:bg-primary hover:border-primary 
+                          hover:text-white rounded-circle" href="javascript:void(0);" onclick="window.print();">
+                                        <i class="fa-solid fa-print icon-1"></i>
+                                    </a>
+                                </li>
+
+
 
                             </ul>
                             @php
@@ -126,145 +164,37 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="panel position-relative mt-4 lg:mt-6 xl:mt-9">
                 <div class="container">
                     <div class="content-wrap row child-col-12 lg:child-cols g-4 lg:g-6">
+
+                       
+
                         <div class="lg:col-8 uc-first-column">
                             <div class="max-w-lg">
                                 <div class="post-content panel fs-6 md:fs-5" data-uc-lightbox="animation: scale">
                                     {!! $news->description !!}
                                 </div>
-                                {{-- <div
-                                    class="post-footer panel vstack sm:hstack gap-3 justify-between justifybetween border-top py-4 mt-4 xl:py-9 xl:mt-9">
-                                    <ul class="nav-x gap-narrow text-primary">
-                                        <li><span class="text-black dark:text-white me-narrow">Tags:</span></li>
-                                        <li>
-                                            <a href="#" class="uc-link gap-0 dark:text-white">Food <span
-                                                    class="text-black dark:text-white">,</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="uc-link gap-0 dark:text-white">Life Style <span
-                                                    class="text-black dark:text-white">,</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="uc-link gap-0 dark:text-white">Tech <span
-                                                    class="text-black dark:text-white">,</span></a>
-                                        </li>
-                                        <li><a href="#" class="uc-link gap-0 dark:text-white">Travel</a></li>
-                                    </ul>
-                                    <ul class="post-share-icons nav-x gap-narrow">
-                                        <li class="me-1"><span class="text-black dark:text-white">Share:</span></li>
-                                        <li>
-                                            <a class="btn btn-md btn-outline-gray-100 p-0 w-32px lg:w-40px h-32px lg:h-40px text-dark dark:text-white dark:border-gray-600 hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                                href="#"><i class="unicon-logo-facebook icon-1"></i></a>
-                                        </li>
-                                        <li>
-                                            <a class="btn btn-md btn-outline-gray-100 p-0 w-32px lg:w-40px h-32px lg:h-40px text-dark dark:text-white dark:border-gray-600 hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                                href="#"><i class="unicon-logo-x-filled icon-1"></i></a>
-                                        </li>
-                                        <li>
-                                            <a class="btn btn-md btn-outline-gray-100 p-0 w-32px lg:w-40px h-32px lg:h-40px text-dark dark:text-white dark:border-gray-600 hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                                href="#"><i class="unicon-email icon-1"></i></a>
-                                        </li>
-                                        <li>
-                                            <a class="btn btn-md btn-outline-gray-100 p-0 w-32px lg:w-40px h-32px lg:h-40px text-dark dark:text-white dark:border-gray-600 hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                                href="#"><i class="unicon-link icon-1"></i></a>
-                                        </li>
-                                    </ul>
-                                </div> --}}
+                                @php 
+                                $ad = getAd('news_inside'); 
+                                $image = $ad ? firstImage($ad->images) : null;
+                            @endphp
 
-                                {{-- <div class="post-related panel border-top pt-2 mt-8 xl:mt-9">
-                                    <h4 class="h5 xl:h4 mb-5 xl:mb-6">Related to this topic:</h4>
-                                    <div class="row child-cols-6 md:child-cols-4 gx-2 gy-4 sm:gx-3 sm:gy-6">
-                                        <div>
-                                            <article class="post type-post panel vstack gap-2">
-                                                <figure
-                                                    class="featured-image m-0 ratio ratio-4x3 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                                        src="../assets/images/common/img-fallback.png"
-                                                        data-src="../assets/images/demo-two/posts/img-07.html"
-                                                        alt="The Art of Baking: From Classic Bread to Artisan Pastries"
-                                                        data-uc-img="loading: lazy">
-                                                    <a href="blog-details.html" class="position-cover"
-                                                        data-caption="The Art of Baking: From Classic Bread to Artisan Pastries"></a>
-                                                </figure>
-                                                <div class="post-header panel vstack gap-1">
-                                                    <h5 class="h6 md:h5 m-0">
-                                                        <a class="text-none" href="blog-details.html">The Art of Baking:
-                                                            From Classic Bread to Artisan Pastries</a>
-                                                    </h5>
-                                                    <div class="post-date hstack gap-narrow fs-7 opacity-60">
-                                                        <span>Feb 28,
-                                                            <script>
-                                                                document.write(
-                                                                    new Date().getFullYear()
-                                                                )
-                                                            </script>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div>
-                                            <article class="post type-post panel vstack gap-2">
-                                                <figure
-                                                    class="featured-image m-0 ratio ratio-4x3 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                                        src="../assets/images/common/img-fallback.png"
-                                                        data-src="../assets/images/demo-two/posts/img-08.jpg"
-                                                        alt="AI and Marketing: Unlocking Customer Insights"
-                                                        data-uc-img="loading: lazy">
-                                                    <a href="blog-details.html" class="position-cover"
-                                                        data-caption="AI and Marketing: Unlocking Customer Insights"></a>
-                                                </figure>
-                                                <div class="post-header panel vstack gap-1">
-                                                    <h5 class="h6 md:h5 m-0">
-                                                        <a class="text-none" href="blog-details.html">AI and Marketing:
-                                                            Unlocking Customer Insights</a>
-                                                    </h5>
-                                                    <div class="post-date hstack gap-narrow fs-7 opacity-60">
-                                                        <span>Feb 22,
-                                                            <script>
-                                                                document.write(
-                                                                    new Date().getFullYear()
-                                                                )
-                                                            </script>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div>
-                                            <article class="post type-post panel vstack gap-2">
-                                                <figure
-                                                    class="featured-image m-0 ratio ratio-4x3 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                                        src="../assets/images/common/img-fallback.png"
-                                                        data-src="../assets/images/demo-two/posts/img-09.jpg"
-                                                        alt="Hidden Gems: Underrated Travel Destinations Around the World"
-                                                        data-uc-img="loading: lazy">
-                                                    <a href="blog-details.html" class="position-cover"
-                                                        data-caption="Hidden Gems: Underrated Travel Destinations Around the World"></a>
-                                                </figure>
-                                                <div class="post-header panel vstack gap-1">
-                                                    <h5 class="h6 md:h5 m-0">
-                                                        <a class="text-none" href="blog-details.html">Hidden Gems:
-                                                            Underrated Travel Destinations Around the World</a>
-                                                    </h5>
-                                                    <div class="post-date hstack gap-narrow fs-7 opacity-60">
-                                                        <span>Feb 14,
-                                                            <script>
-                                                                document.write(
-                                                                    new Date().getFullYear()
-                                                                )
-                                                            </script>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div> --}}
+                            @if($ad && $image)
+                            <div class="news-inside-ad my-4 text-center">
+
+                                <a href="{{ $ad->link ?? '#' }}" target="_blank" rel="nofollow">
+                                    <img 
+                                        src="{{ asset($image) }}" 
+                                        alt="{{ $ad->title ?? 'Advertisement' }}" 
+                                        class="w-100 rounded"
+                                        style="max-width: 100%; height: auto; object-fit: cover;"
+                                    >
+                                </a>
+                            </div>
+                            @endif  
                                 <div id="blog-comment" class="panel border-top pt-2 mt-8 xl:mt-9">
                                     <h4 class="h5 xl:h4 mb-5 xl:mb-6">Comments ({{ $news->comments->count() }})</h4>
 
@@ -318,9 +248,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
-                        <div class="lg:col-4">
+                       
+                        <div class="lg:col-4" id="recent-posts">
                             <div class="sidebar-wrap panel vstack gap-2" data-uc-sticky="end: true;">
                                 <div class="right-sidebar">
                                     <div class="recent-widget widget">
@@ -360,13 +292,25 @@
                                         </div>
                                     </div>
 
-                                    <section id="media_image-1" class="widget widget_media_image"><img width="600"
-                                            height="700"
-                                            src="../../../reactheme.com/news5/news-magazine/wp-content/uploads/sites/26/2025/04/add__image.png"
-                                            class="image wp-image-10098 attachment-full size-full" alt="" decoding="async"
-                                            srcset="https://reactheme.com/news5/news-magazine/wp-content/uploads/sites/26/2025/04/add__image.png 600w, https://reactheme.com/news5/news-magazine/wp-content/uploads/sites/26/2025/04/add__image-257x300.png 257w"
-                                            sizes="(max-width: 600px) 100vw, 600px"></section>
+                                    @php 
+                                        $ad = getAd('news_right_side');
+                                        $image = $ad ? firstImage($ad->images) : null;
+                                    @endphp
 
+                                    @if($ad && $image)
+                                    <section id="media_image-1" class="widget widget_media_image">
+
+                                        <a href="{{ $ad->link ?? '#' }}" target="_blank" rel="nofollow">
+                                            <img 
+                                                src="{{ asset($image) }}" 
+                                                alt="{{ $ad->title ?? 'Advertisement' }}" 
+                                                class="image attachment-full size-full"
+                                                style="width:100%; height:auto;"
+                                            >
+                                        </a>
+
+                                    </section>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -405,11 +349,11 @@
 
                         // Show success message
                         $(".response-msg").html(`
-                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            ${response.message ?? "Comment added successfully!"}
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                        </div>
-                                    `);
+                                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                                ${response.message ?? "Comment added successfully!"}
+                                                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                            </div>
+                                                        `);
                     },
 
                     error: function (xhr) {
@@ -420,11 +364,11 @@
 
                         // Show general error alert
                         $(".response-msg").html(`
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            Please fix the errors below.
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                        </div>
-                                    `);
+                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                Please fix the errors below.
+                                                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                            </div>
+                                                        `);
 
                         // Show field-wise error messages
                         $.each(errors, function (key, value) {

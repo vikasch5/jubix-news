@@ -75,12 +75,12 @@
                                 <span>English</span>
                                 <span data-uc-drop-parent-icon=""></span>
                             </a>
-                            <div class="p-2 bg-white dark:bg-gray-800 shadow-xs w-150px"
+                            {{-- <div class="p-2 bg-white dark:bg-gray-800 shadow-xs w-150px"
                                 data-uc-drop="mode: click; boundary: !.uc-footer-bottom; animation: uc-animation-slide-top-small; duration: 150;">
                                 <ul class="nav-y gap-1 fw-medium items-end">
                                     <li><a href="#en">English</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="footer-copyright vstack sm:hstack justify-center items-center gap-1 lg:gap-2">
@@ -94,8 +94,8 @@
                         <ul class="nav-x gap-2 fw-medium">
                             <li><a class="uc-link text-underline hover:text-gray-900 dark:hover:text-white duration-150"
                                     href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
-                            <li><a class="uc-link text-underline hover:text-gray-900 dark:hover:text-white duration-150"
-                                    href="{{ route('terms.conditions') }}">Terms & condition</a></li>
+                            {{-- <li><a class="uc-link text-underline hover:text-gray-900 dark:hover:text-white duration-150"
+                                    href="{{ route('terms.conditions') }}">Terms & condition</a></li> --}}
                         </ul>
                     </div>
                 </div>

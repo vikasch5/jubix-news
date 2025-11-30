@@ -83,6 +83,9 @@
                 <li>
                     <a href="{{ route('videos.list') }}">Videos</a>
                 </li>
+                <li>
+                    <a href="{{ route('contact.us') }}">Contact Us</a>
+                </li>
             </ul>
 
             <ul class="social-icons nav-x mt-4">
@@ -590,6 +593,9 @@
                             <li>
                                 <a href="{{ route('videos.list') }}">Videos</a>
                             </li>
+                            <li>
+                                <a href="{{ route('contact.us') }}">Contact Us</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -656,3 +662,21 @@
         </div>
     </nav>
 </header>
+
+@php 
+            $ad = getAd('header_below');
+    $image = $ad ? firstImage($ad->images) : null;
+@endphp
+
+@if($ad && $image)
+    <div class="advertisment py-2">
+        <span class="text-center d-block mb-1">Advertisement</span>
+
+        <div class="advertisment-img text-center">
+            <a href="{{ $ad->link ?? '#' }}" target="_blank" rel="nofollow">
+                <img src="{{ asset($image) }}" alt="Advertisement Banner" class="img-fluid w-100"
+                    style="max-height: 120px; object-fit: cover;">
+            </a>
+        </div>
+    </div>
+@endif

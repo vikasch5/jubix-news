@@ -19,11 +19,11 @@ class SettingController
         // 🔥 VALIDATION
         // --------------------------
         $request->validate([
-            'favicon' => 'nullable|image|mimes:png,jpg,jpeg,ico|max:1024|dimensions:max_width=200,max_height=200',
-            'logo'    => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048|dimensions:max_width=600,max_height=300',
+            'favicon' => 'nullable|image|mimes:png,jpg,jpeg,ico|max:1024|dimensions:max_width=50,max_height=50',
+            'logo'    => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048|dimensions:max_width=200,max_height=100',
         ], [
-            'favicon.dimensions' => 'Favicon must be max 200x200px.',
-            'logo.dimensions' => 'Logo must be max 600x300px.',
+            'favicon.dimensions' => 'Favicon must be max 50x50px.',
+            'logo.dimensions' => 'Logo must be max 200x100px.',
         ]);
 
         // Fetch setting row

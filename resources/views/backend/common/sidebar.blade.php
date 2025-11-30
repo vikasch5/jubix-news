@@ -72,6 +72,30 @@
                         <span class="side-menu__label">Videos</span>
                     </a>
                 </li>
+                <li
+                    class="slide has-sub {{ in_array(Route::currentRouteName(), ['admin.ads.list', 'admin.ads.add']) ? 'active' : '' }}">
+                    <a href="javascript:void(0);"
+                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.ads.list', 'admin.ads.add']) ? 'active' : '' }}">
+                        <i class="ri-arrow-right-s-line side-menu__angle"></i>
+                        <i class="side-menu__icon ri-megaphone-line"></i>
+                        <span class="side-menu__label">Ads Management</span>
+                    </a>
+
+                    <ul class="slide-menu child1">
+                         <li class="slide">
+                            <a href="{{ route('admin.category.index') }}"
+                                class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.ads.list', 'admin.ads.add']) ? 'active' : '' }}">
+                                Normal Ads
+                            </a>
+                        </li>
+                         <li class="slide">
+                            <a href="#"
+                                class="side-menu__item ">
+                                Classified Ads
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="slide">
                     <a href="{{ route('admin.settings') }}"

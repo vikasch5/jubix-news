@@ -27,3 +27,40 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
+
+.advertisment {
+    width: 100%;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.advertisment-img {
+    display: flex;
+    justify-content: center;
+}
+
+.advertisment-img img {
+    width: 100%;
+    max-width: 970px;
+    /* Larger desktop banner */
+    height: 250px;
+    /* Height increased */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .advertisment-img img {
+        max-width: 728px;
+        height: 150px;
+        /* Medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .advertisment-img img {
+        max-width: 320px;
+        height: 100px;
+        /* Mobile size */
+    }
+}

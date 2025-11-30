@@ -21,7 +21,7 @@
 
                                     <!-- Favicon -->
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Favicon</label>
+                                        <label class="form-label">Favicon (50x50)</label>
                                         <input type="file" name="favicon" class="form-control" accept="image/*">
 
                                         @if(!empty($setting->favicon))
@@ -32,7 +32,7 @@
 
                                     <!-- Logo -->
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Logo</label>
+                                        <label class="form-label">Logo (200x100)</label>
                                         <input type="file" name="logo" class="form-control" accept="image/*">
 
                                         @if(!empty($setting->logo))
