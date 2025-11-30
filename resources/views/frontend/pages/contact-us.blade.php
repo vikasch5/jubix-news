@@ -149,8 +149,9 @@
                         <div class="card border-0 shadow-lg rounded-4 overflow-hidden contact-card">
                             <div class="ratio ratio-4x3">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.7893833759604!2d72.874584315359!3d19.113645187059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7d5c0a0b0c1%3A0x94f08d3a9e5f5e55!2sAndheri%20East%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                                    style="border:0;" allowfullscreen loading="lazy"></iframe>
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2511.078688702698!2d77.28137557375537!3d28.689188781508776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfc77a602d88d%3A0x7216869d571f0146!2s11%2C%20Netaji%20Subhash%20Marg%2C%20Chhajjupur%2C%20Shahdara%2C%20Delhi%2C%20110032!5e1!3m2!1sen!2sin!4v1764518798998!5m2!1sen!2sin"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
 
