@@ -73,9 +73,9 @@
                     </a>
                 </li>
                 <li
-                    class="slide has-sub {{ in_array(Route::currentRouteName(), ['admin.ads.list', 'admin.ads.add']) ? 'active' : '' }}">
+                    class="slide has-sub {{ in_array(Route::currentRouteName(), ['admin.ads.list', 'admin.ads.add','admin.classified.ads.add', 'admin.classified.ads.list']) ? 'active' : '' }}">
                     <a href="javascript:void(0);"
-                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.ads.list', 'admin.ads.add']) ? 'active' : '' }}">
+                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.ads.list', 'admin.ads.add' ,'admin.classified.ads.add', 'admin.classified.ads.list']) ? 'active' : '' }}">
                         <i class="ri-arrow-right-s-line side-menu__angle"></i>
                         <i class="side-menu__icon ri-megaphone-line"></i>
                         <span class="side-menu__label">Ads Management</span>
@@ -89,8 +89,8 @@
                             </a>
                         </li>
                          <li class="slide">
-                            <a href="#"
-                                class="side-menu__item ">
+                            <a href="{{ route('admin.classified.ads.list') }}"
+                                class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.classified.ads.list', 'admin.classified.ads.add']) ? 'active' : '' }}">
                                 Classified Ads
                             </a>
                         </li>

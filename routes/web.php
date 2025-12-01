@@ -61,6 +61,12 @@ Route::prefix('admin')->group(function () {
         Route::post('ads-delete', [AdsController::class, 'deleteAds'])->name('admin.ads.delete');
         Route::post('ads-img-delete', [AdsController::class, 'deleteImage'])->name('admin.ads.delete-image');
 
+        Route::get('classified-ads-add/{id?}', [AdsController::class, 'addClassifiedAdsIndex'])->name('admin.classified.ads.add');
+        Route::get('classified-ads-list', [AdsController::class, 'ClassifiedIndex'])->name('admin.classified.ads.list');
+        Route::post('classified-ads-save', [AdsController::class, 'ClassifiedstoreOrUpdate'])->name('admin.classified.ads.save');
+        Route::post('classified-ads-delete', [AdsController::class, 'deleteClassifiedAds'])->name('admin.classified.ads.delete');
+        Route::post('classified-ads-img-delete', [AdsController::class, 'deleteClassifiedImage'])->name('admin.classified.ads.delete-image');
+
 
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');
     });

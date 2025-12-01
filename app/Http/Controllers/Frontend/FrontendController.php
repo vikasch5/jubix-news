@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Category;
+use App\Models\ClassifiedAds;
 use App\Models\Comment;
 use App\Models\News;
 use App\Models\SubCategory;
@@ -116,6 +117,7 @@ class FrontendController
     }
 
     public function classifiedAds(){
-        return view('frontend.pages.classified-ads');
+        $ads = ClassifiedAds::where('status', 'active')->get();
+        return view('frontend.pages.classified-ads', compact('ads'));
     }
 }
