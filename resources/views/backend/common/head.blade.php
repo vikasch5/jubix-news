@@ -51,4 +51,11 @@
     <script src="{{ asset('backend/assets/main.js')}}"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
 
+    <style>
+        table.table th,
+        table.table td {
+            white-space: normal;
+            /* allows text wrapping */
+        }
+    </style>
 </head>
