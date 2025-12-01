@@ -114,4 +114,8 @@ class FrontendController
     {
         return view('frontend.pages.contact-us');
     }
+
+    public function classifiedAds(){
+        return view('frontend.pages.classified-ads');
+    }
 }
