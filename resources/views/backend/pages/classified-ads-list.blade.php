@@ -68,11 +68,10 @@
                                                         value="{{ route('admin.ads.delete') }}">
 
                                                     <div class="hstack gap-2 fs-15">
-                                                        <a href="{{ route('admin.ads.add', $ad->id) }}"
+                                                        <a href="{{ route('admin.classified.ads.add', $ad->id) }}"
                                                             class="btn btn-icon btn-sm btn-info-transparent rounded-pill">
                                                             <i class="ri-edit-line"></i>
                                                         </a>
-
                                                         <a href="javascript:void(0);" data-id="{{ $ad->id }}"
                                                             class="btn btn-icon btn-sm btn-danger-transparent rounded-pill deleteRecord">
                                                             <i class="ri-delete-bin-line"></i>

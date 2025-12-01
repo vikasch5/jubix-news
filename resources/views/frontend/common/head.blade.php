@@ -54,16 +54,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   {{-- @if(!empty($settings->font_style) && $settings->font_style != 'default')
-    <style>
-      @font-face {
-        font-family: 'BF082HIN';
-        src: url('{{ asset("frontend/fonts/" . $settings->font_style) }}');
-      }
+  <style>
+    @font-face {
+      font-family: 'BF082HIN';
+      src: url('{{ asset("frontend/fonts/" . $settings->font_style) }}');
+    }
 
-      body {
-        font-family: 'BF082HIN', sans-serif !important;
-      }
-    </style>
+    body {
+      font-family: 'BF082HIN', sans-serif !important;
+    }
+  </style>
   @endif --}}
 
 </head>

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
+use App\Models\ClassifiedAds;
 use App\Models\News;
 use App\Models\Setting;
 use Illuminate\Pagination\Paginator;
@@ -35,10 +36,13 @@ class AppServiceProvider extends ServiceProvider
                 ->take(10)
                 ->get();
             $settings = Setting::first();
+            $classifiedAds = ClassifiedAds::where('status', 'active')
+                ->count();
             $view->with([
                 'categories' => $categories,
                 'headlines'    => $headline,
                 'settings' => $settings,
+                'classifiedAds' => $classifiedAds,
             ]);
         });
     }

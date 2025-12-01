@@ -86,9 +86,11 @@
                 <li>
                     <a href="{{ route('contact.us') }}">Contact Us</a>
                 </li>
-                <li>
-                    <a href="{{ route('classified.ads') }}">Classified Ads</a>
-                </li>
+                @if ($classifiedAds > '0')
+                    <li>
+                        <a href="{{ route('classified.ads') }}">Classified Ads</a>
+                    </li>
+                @endif
             </ul>
 
             <ul class="social-icons nav-x mt-4">
@@ -598,9 +600,11 @@
                             <li>
                                 <a href="{{ route('contact.us') }}">Contact Us</a>
                             </li>
-                            <li>
-                                <a href="{{ route('classified.ads') }}">Classified Ads</a>
-                            </li>
+                            @if ($classifiedAds > '0')
+                                <li>
+                                    <a href="{{ route('classified.ads') }}">Classified Ads</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -669,7 +673,7 @@
 </header>
 
 @php 
-                            $ad = getAd('header_below');
+                                $ad = getAd('header_below');
     $image = $ad ? firstImage($ad->images) : null;
 @endphp
 
