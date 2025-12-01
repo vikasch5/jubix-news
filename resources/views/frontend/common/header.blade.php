@@ -510,8 +510,7 @@
             data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
             <div class="container container-full">
                 <div class="uc-navbar-item">
-                    <div class="swiper swiper-ticker swiper-ticker-sep px-2" style="--uc-ticker-gap: 32px"
-                        data-uc-swiper="items: auto; gap: 32; center: true; center-bounds: true; autoplay: 10000; speed: 10000; autoplay-delay: 0.1; loop: true; allowTouchMove: false; freeMode: true; autoplay-disableOnInteraction: true;">
+                    <div class="swiper swiper-ticker swiper-ticker-sep px-2" style="--uc-ticker-gap: 32px">
                         <div class="swiper-wrapper">
                             @foreach ($headlines as $headline)
                                 <div class="swiper-slide text-white">
@@ -664,7 +663,7 @@
 </header>
 
 @php 
-            $ad = getAd('header_below');
+                $ad = getAd('header_below');
     $image = $ad ? firstImage($ad->images) : null;
 @endphp
 

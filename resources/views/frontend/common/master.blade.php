@@ -18,7 +18,8 @@
     <!-- Footer end -->
 
     <!-- include jquery & bootstrap js -->
-    {{-- <script defer src="{{ asset('frontend/js/libs/jquery.min.js')}}"></script> --}}
+    {{--
+    <script defer src="{{ asset('frontend/js/libs/jquery.min.js')}}"></script> --}}
     <script defer src="{{ asset('frontend/js/libs/bootstrap.min.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -37,6 +38,29 @@
     <!-- include app script -->
     <script defer src="{{ asset('frontend/js/app.js')}}"></script>
     @yield('scripts')
+    <script>
+        // Duplicate slides for infinite flow
+        const swiperWrapper = document.querySelector('.swiper-ticker .swiper-wrapper');
+        const slides = swiperWrapper.innerHTML;
+        swiperWrapper.innerHTML = slides + slides + slides;
+
+        // Initialize perfect flow ticker
+        new Swiper('.swiper-ticker', {
+            slidesPerView: 'auto',
+            spaceBetween: 40,
+            loop: false,
+            freeMode: true,
+            freeModeMomentum: false,
+            allowTouchMove: false,
+
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false
+            },
+
+            speed: 12000
+        });
+    </script>
     <script>
         // Schema toggle via URL
         const queryString = window.location.search;
