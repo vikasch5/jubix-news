@@ -39,13 +39,13 @@
     <script defer src="{{ asset('frontend/js/app.js')}}"></script>
     @yield('scripts')
     <script>
-        // Duplicate slides for infinite flow
-        const swiperWrapper = document.querySelector('.swiper-ticker .swiper-wrapper');
-        const slides = swiperWrapper.innerHTML;
-        swiperWrapper.innerHTML = slides + slides + slides;
+        // Duplicate slides 3× for perfect infinite flow
+        const wrapper = document.querySelector('.swiper-ticker .swiper-wrapper');
+        const slidesHTML = wrapper.innerHTML;
+        wrapper.innerHTML = slidesHTML + slidesHTML + slidesHTML;
 
-        // Initialize perfect flow ticker
-        new Swiper('.swiper-ticker', {
+        // Initialize Swiper (Right → Left because of CSS direction: rtl)
+        let ticker = new Swiper('.swiper-ticker', {
             slidesPerView: 'auto',
             spaceBetween: 40,
             loop: false,
@@ -53,14 +53,24 @@
             freeModeMomentum: false,
             allowTouchMove: false,
 
+            speed: 12000,
+
             autoplay: {
                 delay: 0,
-                disableOnInteraction: false
-            },
-
-            speed: 12000
+                disableOnInteraction: false,
+                reverseDirection: false   // MUST stay false for RTL to work
+            }
         });
+
+        // Restart autoplay on visibility
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) ticker.autoplay.start();
+            });
+        });
+        observer.observe(document.querySelector('.swiper-ticker'));
     </script>
+
     <script>
         // Schema toggle via URL
         const queryString = window.location.search;
