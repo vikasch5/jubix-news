@@ -51,4 +51,7 @@
   <!-- include scripts -->
   <script src="{{ asset('frontend/js/uni-core/js/uni-core-bundle.min.js')}}"></script>
   <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
 </head>
