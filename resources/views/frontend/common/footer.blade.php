@@ -69,19 +69,6 @@
                             @endif
                         </ul>
                         <div class="vr"></div>
-                        <div class="d-inline-block">
-                            <a href="#" class="hstack gap-1 text-none fw-medium">
-                                <i class="icon icon-1 unicon-earth-filled"></i>
-                                <span>English</span>
-                                <span data-uc-drop-parent-icon=""></span>
-                            </a>
-                            {{-- <div class="p-2 bg-white dark:bg-gray-800 shadow-xs w-150px"
-                                data-uc-drop="mode: click; boundary: !.uc-footer-bottom; animation: uc-animation-slide-top-small; duration: 150;">
-                                <ul class="nav-y gap-1 fw-medium items-end">
-                                    <li><a href="#en">English</a></li>
-                                </ul>
-                            </div> --}}
-                        </div>
                     </div>
                     <div class="footer-copyright vstack sm:hstack justify-center items-center gap-1 lg:gap-2">
                         <p>Bharat News ©

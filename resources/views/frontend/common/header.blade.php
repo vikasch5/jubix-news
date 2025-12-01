@@ -669,7 +669,7 @@
 </header>
 
 @php 
-                        $ad = getAd('header_below');
+                            $ad = getAd('header_below');
     $image = $ad ? firstImage($ad->images) : null;
 @endphp
 

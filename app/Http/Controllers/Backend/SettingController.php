@@ -81,6 +81,7 @@ class SettingController
         // --------------------------
         // 🔥 SAVE OTHER FIELDS
         // --------------------------
+        // $setting->font_style    = $request->font_style;
         $setting->meta_title       = $request->meta_title;
         $setting->meta_description = $request->meta_description;
         $setting->meta_keywords    = $request->meta_keywords;

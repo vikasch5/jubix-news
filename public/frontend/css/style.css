@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'BF082HIN';
+    src: url('/fonts/BF082HIN.TTF') format('truetype');
+}
+
+/* Apply font only to Hindi text */
+:lang(hi) {
+    font-family: 'BF082HIN' !important;
+}
+
 .video-wrapper {
     position: relative;
 }

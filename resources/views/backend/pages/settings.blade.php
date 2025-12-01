@@ -41,6 +41,24 @@
                                         @endif
                                     </div>
 
+                                    {{-- <div class="col-md-6 mb-3">
+                                        <label class="form-label">Font Style</label>
+                                        <select name="font_style" class="form-control required">
+                                            <option value="default">Default</option>
+                                            <option value="BF143HIN.TTF" @selected(optional($setting)->font_style ==
+                                                "BF143HIN.TTF")>BF143HIN</option>
+                                            <option value="BF096HIN.TTF" @selected(optional($setting)->font_style ==
+                                                "BF096HIN.TTF")>BF096HIN</option>
+                                            <option value="BF100HIN.TTF" @selected(optional($setting)->font_style ==
+                                                "BF100HIN.TTF")>BF100HIN</option>
+                                            <option value="BF102HIN.TTF" @selected(optional($setting)->font_style ==
+                                                "BF102HIN.TTF")>BF102HIN</option>
+                                            <option value="BF142HIN.TTF" @selected(optional($setting)->font_style ==
+                                                "BF142HIN.TTF")>BF142HIN</option>
+                                            <option value="BF082HIN.TTF" @selected(optional($setting)->font_style ==
+                                                "BF082HIN.TTF")>BF082HIN</option>
+                                        </select>
+                                    </div> --}}
                                     <!-- Meta Title -->
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label">Meta Title</label>
