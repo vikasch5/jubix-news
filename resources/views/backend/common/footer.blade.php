@@ -67,6 +67,8 @@ et('backend/assets/analytics-dashboard-Dlvq2xMh.js')}}" /> --}}
 <script type="module" src="{{ asset('backend/assets/custom-switcher-M1ttEsaB.js')}}"></script>
 <script src="{{ asset('common/common.js')}}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+
 
 <!-- END SCRIPTS -->

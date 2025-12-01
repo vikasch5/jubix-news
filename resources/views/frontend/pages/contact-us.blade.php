@@ -113,7 +113,7 @@
                                     </div>
                                     <div>
                                         <h6 class="fw-semibold">Phone</h6>
-                                        <p class="text-muted mb-0">+91 98765 43210</p>
+                                        <p class="text-muted mb-0">+91 9312769393</p>
                                     </div>
                                 </div>
 
@@ -123,8 +123,8 @@
                                     </div>
                                     <div>
                                         <h6 class="fw-semibold">Email</h6>
-                                        <a href="mailto:info@bharatheadline.in" class="text-primary">
-                                            info@bharatheadline.in
+                                        <a href="mailto:bharatheadline@gmail.com" class="text-primary">
+                                            bharatheadline@gmail.com
                                         </a>
                                     </div>
                                 </div>
