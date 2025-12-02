@@ -118,7 +118,7 @@
                                 </li>
                                 <li>
                                     <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px text-dark dark:text-white dark:border-white hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                        href="https://wa.me/?text={{ urlencode($shareUrl) }}"><i
+                                        href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}"><i
                                             class="fa-brands fa-whatsapp icon-1"></i></a>
                                 </li>
                                 <li>
