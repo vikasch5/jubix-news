@@ -110,10 +110,24 @@
                             </div>
 
                             {{-- Ad Section --}}
-                            <div class="widget">
-                                <img src="https://reactheme.com/news5/news-magazine/wp-content/uploads/sites/26/2025/04/add__image.png"
-                                    class="img-fluid rounded" alt="">
+                            @php 
+                                        $ad = getAd('news_right_side');
+                                        $image = $ad ? firstImage($ad->images) : null;
+                                    @endphp
+
+                                    @if($ad && $image)
+                                    <div class="widget">
+                                    <a href="{{ $ad->link ?? '#' }}" target="_blank" rel="nofollow">
+                                                    <img 
+                                                        src="{{ asset($image) }}" 
+                                                        alt="{{ $ad->title ?? 'Advertisement' }}" 
+                                                        class="image attachment-full size-full"
+                                                        style="width:100%; height:auto;"
+                                                    >
+                                                </a>
                             </div>
+                                    @endif
+
 
                         </div>
                     </div>
