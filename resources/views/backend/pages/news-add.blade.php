@@ -194,9 +194,6 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function () {
-            $('#summernote').summernote();
-        });
 
         $(document).on('change', '#news_images', function () {
 
