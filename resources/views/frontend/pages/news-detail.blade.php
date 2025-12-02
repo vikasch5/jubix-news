@@ -2,6 +2,16 @@
 @section('meta_title', $news->meta_title)
 @section('meta_description', $news->meta_description)
 @section('meta_keywords', $news->meta_keywords)
+@section('og_title', $news->title)
+@section('og_description', Str::limit(strip_tags($news->short_description ?? $news->description), 150))
+@section('og_type', 'article')
+@php
+    $firstImage = firstImage($news->images); // change to correct column if different
+    $ogImage = $firstImage
+        ? asset( $firstImage)
+        : asset(optional($settings)->logo);
+@endphp
+@section('og_image', $ogImage)
 @section('content')
     <style>
         .myNewsSwiper .swiper-button-next,
@@ -174,7 +184,7 @@
 
                         <div class="lg:col-8 uc-first-column">
                             <div class="max-w-lg">
-                                <div class="post-content panel fs-6 md:fs-5" data-uc-lightbox="animation: scale">
+                                <div class="post-content text-dark panel fs-6 md:fs-5" data-uc-lightbox="animation: scale">
                                     {!! $news->description !!}
                                 </div>
                                 @php 

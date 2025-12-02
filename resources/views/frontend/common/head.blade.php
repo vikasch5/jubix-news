@@ -29,6 +29,17 @@
   <link rel="preload" href="{{ asset('frontend/js/helpers/anime-helper-defined-timelines.js')}}" as="script">
   <link rel="preload" href="{{ asset('frontend/js/uikit-components-bs.js')}}" as="script">
   <link rel="preload" href="{{ asset('frontend/js/app.js')}}" as="script">
+   <meta property="og:title" content="@yield('og_title', optional($settings)->meta_title)">
+  <meta property="og:description" content="@yield('og_description', optional($settings)->meta_description)">
+  <meta property="og:image" content="@yield('og_image', asset(optional($settings)->logo))">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:type" content="@yield('og_type', 'article')">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="@yield('og_title', optional($settings)->meta_title)">
+  <meta name="twitter:description" content="@yield('og_description', optional($settings)->meta_description)">
+  <meta name="twitter:image" content="@yield('og_image', asset(optional($settings)->logo))">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />

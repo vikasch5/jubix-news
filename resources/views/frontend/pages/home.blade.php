@@ -350,7 +350,7 @@
                                         <h2
                                             class="h6 ft-tertiary fw-bold ls-0 text-uppercase m-0 text-black dark:text-white">
                                             <a class="hstack gap-1 text-none hover:text-primary duration-150"
-                                                href="blog-category.html">
+                                                href="{{ route('category', $homeCategory->slug) }}">
                                                 <span>{{ $homeCategory->category_name }}</span>
                                                 <i class="icon-1 fw-bold unicon-chevron-right"></i>
                                             </a>
