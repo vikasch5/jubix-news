@@ -36,24 +36,17 @@
                                 </video>
                             @endif
                         </div>
+                        
                         <div class="row mt-5">
                             <div class="col-lg-8">
-
                                 <h1 class="h3 mb-3">{{ $video->title }}</h1>
                                 <div class="post fs-6 md:fs-5">
                                     {!! $video->description !!}
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-
-                    {{-- RIGHT: SIDEBAR --}}
-                    <div class="col-lg-4">
-                        <div class="sidebar-wrap panel vstack gap-4" data-uc-sticky="end: true;">
-
-                            {{-- SHARE BUTTONS --}}
-                            @php
+                        <div class="row mt-5">
+                              @php
                                 $shareUrl = route('video.detail', $video->slug);
                                 $shareTitle = urlencode($video->title);
                             @endphp
@@ -89,7 +82,12 @@
                                     </li>
                                 </ul>
                             </div>
+                        </div>
+                    </div>
 
+                    {{-- RIGHT: SIDEBAR --}}
+                    <div class="col-lg-4">
+                        <div class="sidebar-wrap panel vstack gap-4" data-uc-sticky="end: true;">
                             {{-- Recent Videos --}}
                             <div class="widget">
                                 <h4 class="widget-title">Recent Videos</h4>
