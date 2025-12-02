@@ -87,7 +87,7 @@
         <article class="post type-post single-post py-4 lg:py-6 xl:py-9  NewsSection">
             <div class="container max-w-xl">
                 <div class="post-header">
-                    <div class="panel vstack gap-4 md:gap-6 xl:gap-8 text-center">
+                    <div class="panel vstack gap-4 md:gap-6 xl:gap-4 text-center">
                         <div @php
                             $shareUrl = route('news.detail', $news->slug);
                             $shareTitle = urlencode($news->title);
@@ -171,13 +171,54 @@
                             </div>
 
                         </div>
+                        <div class="post-meta panel hstack justify-between fs-7 text-dark text-opacity-60 mt-1">
 
+                            <div class="meta">
+                                <div class="hstack gap-1">
+                                    <div class="post-author hstack gap-1 m-0">
+                                        <a href="#"
+                                            data-uc-tooltip="Peter Sawyer">
+                                            <img src="{{ asset('frontend/images/avatars/02.png') }}"
+                                                alt="{{ $news->reporter_name }}"
+                                                class="w-24px h-24px rounded-circle">
+                                        </a>
+                                        <a href="#"
+                                            class="text-dark text-none fw-bold">
+                                            {{ $news->reporter_name }}
+                                        </a>
+                                    </div>
+                                    <!-- Time BEFORE comment -->
+                                    <div class="hstack gap-narrow">
+                                       <i class="fa fa-clock"></i>
+                                        <span>{{
+                                            $news->created_at->diffForHumans()
+                                            }}</span>
+                                    </div>
+
+                                    <!-- Comments -->
+                                    <div class="hstack gap-narrow">
+                                        <i class="icon-narrow unicon-view"></i>
+                                        <span>{{ $news->totalViews()
+                                            }}</span>
+                                    </div>
+
+                                    <!-- Author -->
+                                    
+
+                                </div>
+                            </div>
+
+                            <div class="actions">
+                                <div class="hstack gap-1"></div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="panel position-relative mt-4 lg:mt-6 xl:mt-9">
+            <div class="panel position-relative mt-4 lg:mt-6 xl:mt-4">
                 <div class="container">
                     <div class="content-wrap row child-col-12 lg:child-cols g-4 lg:g-6">
 

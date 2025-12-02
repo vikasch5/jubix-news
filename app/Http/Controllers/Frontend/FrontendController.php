@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\ClassifiedAds;
 use App\Models\Comment;
 use App\Models\News;
+use App\Models\NewsView;
 use App\Models\SubCategory;
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -53,6 +54,7 @@ class FrontendController
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get();
+        recordView('news', $news->id);
         return view('frontend.pages.news-detail', compact('news', 'recent_news'));
     }
 
@@ -88,6 +90,7 @@ class FrontendController
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get();
+        recordView('video', $video->id);
         return view('frontend.pages.video-detail', compact('video', 'recent_videos'));
     }
 
@@ -102,12 +105,12 @@ class FrontendController
 
     public function search($param, $page = 1)
     {
-         $search_results = News::where('status', 'active')
-        ->where(function ($query) use ($param) {
-            $query->where('title', 'like', '%' . $param . '%')
-                  ->orWhere('description', 'like', '%' . $param . '%');
-        })
-        ->paginate(10, ['*'], 'page', $page);
+        $search_results = News::where('status', 'active')
+            ->where(function ($query) use ($param) {
+                $query->where('title', 'like', '%' . $param . '%')
+                    ->orWhere('description', 'like', '%' . $param . '%');
+            })
+            ->paginate(10, ['*'], 'page', $page);
         return view('frontend.pages.search-results', compact('search_results', 'param'));
     }
 
@@ -116,7 +119,8 @@ class FrontendController
         return view('frontend.pages.contact-us');
     }
 
-    public function classifiedAds(){
+    public function classifiedAds()
+    {
         $ads = ClassifiedAds::where('status', 'active')->get();
         return view('frontend.pages.classified-ads', compact('ads'));
     }

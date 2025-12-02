@@ -17,4 +17,15 @@ class Video extends Model
         'status',
         'slug',
     ];
+
+    public function views()
+    {
+        return $this->hasMany(View::class, 'item_id')
+            ->where('type', 'video');
+    }
+
+    public function totalViews()
+    {
+        return $this->views()->count();
+    }
 }

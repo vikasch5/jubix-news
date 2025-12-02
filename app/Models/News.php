@@ -38,4 +38,14 @@ class News extends Model
     {
         return $this->hasMany(Comment::class, 'news_id');
     }
+    public function views()
+    {
+        return $this->hasMany(View::class, 'item_id')
+            ->where('type', 'news');
+    }
+
+    public function totalViews()
+    {
+        return $this->views()->count();
+    }
 }

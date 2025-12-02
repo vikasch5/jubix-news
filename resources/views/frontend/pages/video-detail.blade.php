@@ -46,8 +46,37 @@
                                 </video>
                             @endif
                         </div>
+                        <div class="post-meta panel hstack justify-between fs-7 text-dark text-opacity-60 mt-1">
+
+                            <div class="meta">
+                                <div class="hstack gap-3">
+
+                            <!-- Time -->
+                            <div class="hstack gap-narrow">
+                                <i class="fa fa-clock"></i>
+                                <span>{{ $video->created_at->diffForHumans() }}</span>
+                            </div>
+
+                            <!-- Views -->
+                            <div class="hstack gap-narrow">
+                                <i class="icon-narrow unicon-view"></i>
+                                <span>{{ $video->totalViews() }}</span>
+                            </div>
+
+                        </div>
+
+                                    
+
+                                </div>
+                            </div>
+
+                            <div class="actions">
+                                <div class="hstack gap-1"></div>
+                            </div>
+
+                        </div>
                         
-                        <div class="row mt-5">
+                        <div class="row mt-2">
                             <div class="col-lg-8">
                                 <h1 class="h3 mb-3">{{ $video->title }}</h1>
                                 <div class="post fs-6 md:fs-5">
@@ -96,7 +125,7 @@
                     </div>
 
                     {{-- RIGHT: SIDEBAR --}}
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mt-3">
                         <div class="sidebar-wrap panel vstack gap-4" data-uc-sticky="end: true;">
                             {{-- Recent Videos --}}
                             <div class="widget">
