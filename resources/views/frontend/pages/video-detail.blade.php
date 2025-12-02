@@ -96,7 +96,7 @@
                                 @foreach($recent_videos as $rv)
                                     <div class="d-flex mb-2 border-bottom pb-2">
                                         <a href="{{ route('video.detail', $rv->slug) }}">
-                                            <img src="https://img.youtube.com/vi/{{ youtube_id($video->youtube_link) }}/mqdefault.jpg"
+                                            <img src="https://img.youtube.com/vi/{{ youtube_id($rv->youtube_link) }}/mqdefault.jpg"
                                                 width="90" class="rounded me-2">
                                         </a>
                                         <div>
