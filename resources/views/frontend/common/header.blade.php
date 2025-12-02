@@ -51,8 +51,12 @@
         </header>
 
         <div class="panel">
-            <form id="search-panel" class="form-icon-group vstack gap-1 mb-3" data-uc-sticky="">
-                <input type="email" class="form-control form-control-md fs-6" placeholder="Search..">
+            <form id="search-panel" class="form-icon-group vstack gap-1 mb-3" onsubmit="event.preventDefault(); 
+                let q = this.q.value.trim(); 
+                if (q) { 
+                    window.location.href = '{{ url('search') }}/' + encodeURIComponent(q); 
+                }">
+                <input type="search" name="q" class="form-control form-control-md fs-6" placeholder="Search..">
                 <span class="form-icon text-gray">
                     <i class="unicon-search icon-1"></i>
                 </span>
