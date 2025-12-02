@@ -1,4 +1,14 @@
 @extends('frontend.common.master')
+@section('meta_title', $video->meta_title ?? $video->title)
+@section('meta_description', $video->meta_details ?? Str::limit(strip_tags($video->description), 160))
+@section('meta_keywords', $video->meta_keyword ?? optional($settings)->meta_keywords)
+@section('og_title', $video->meta_title ?? $video->title)
+@section('og_description', $video->meta_details ?? Str::limit(strip_tags($video->description), 160))
+@section('og_image', youtube_id($video->youtube_link)
+    ? "https://img.youtube.com/vi/" . youtube_id($video->youtube_link) . "/mqdefault.jpg"
+    : asset(optional($settings)->logo)
+)
+@section('og_type', 'video')  
 
 @section('content')
     <div id="wrapper" class="wrap overflow-hidden-x">
