@@ -91,6 +91,7 @@
                         <div @php
                             $shareUrl = route('news.detail', $news->slug);
                             $shareTitle = urlencode($news->title);
+                             $shareText  = $shareTitle . "\n" . $shareUrl;
                         @endphp
                             class="panel vstack items-center max-w-400px sm:max-w-500px xl:max-w-md mx-auto gap-2 md:gap-3">
                             <h1 class="h4 sm:h2 lg:h1 xl:display-6">{{ $news->title }}</h1>
@@ -98,28 +99,28 @@
                                 <li>
                                     <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px text-dark dark:text-white dark:border-white hover:bg-primary hover:border-primary hover:text-white rounded-circle"
                                         href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}"><i
-                                            class="unicon-logo-facebook icon-1"></i></a>
+                                           target="_blank" class="unicon-logo-facebook icon-1"></i></a>
                                 </li>
                                 <li>
                                     <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px text-dark dark:text-white dark:border-white hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                        href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareTitle }}"><i
+                                       target="_blank" href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareTitle }}"><i
                                             class="unicon-logo-x-filled icon-1"></i></a>
                                 </li>
                                 <li>
                                     <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px text-dark dark:text-white dark:border-white hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                        href="https://www.linkedin.com/shareArticle?mini=true&url={{ $shareUrl }}&title={{ $shareTitle }}"><i
+                                    target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ $shareUrl }}&title={{ $shareTitle }}"><i
                                             class="unicon-logo-linkedin icon-1"></i></a>
                                 </li>
 
                                 <li>
                                     <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px text-dark dark:text-white dark:border-white hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                        href="https://www.instagram.com/?url={{ $shareUrl }}"><i
+                                        href="https://www.instagram.com/?url={{ $shareUrl }}" target="_blank"><i
                                             class="unicon-logo-instagram icon-1"></i></a>
                                 </li>
                                 <li>
                                     <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px text-dark dark:text-white dark:border-white hover:bg-primary hover:border-primary hover:text-white rounded-circle"
-                                        href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}"><i
-                                            class="fa-brands fa-whatsapp icon-1"></i></a>
+                                        href="https://wa.me/?text={{ urlencode($shareText) }}"><i
+                                            class="fa-brands fa-whatsapp icon-1" target="_blank"></i></a>
                                 </li>
                                 <li>
                                     <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px 
