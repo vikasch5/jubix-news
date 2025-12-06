@@ -1026,9 +1026,7 @@
                                                             </div>
                                                             <p
                                                                 class="post-excrept ft-tertiary fs-6 text-gray-900 dark:text-white text-opacity-60  my-1">
-                                                                {{
-                                                                \Illuminate\Support\Str::words(strip_tags($latestNews->description),
-                                                                50, '...') }}
+                                                                {!! \Illuminate\Support\Str::words($latestNews->description, 50, '...') !!}
 
                                                             </p>
                                                             <div class="post-link">
