@@ -64,7 +64,7 @@
                                                 </div>
 
                                                 <div class="post-header panel vstack gap-1 lg:gap-2">
-                                                    <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
+                                                    <h3 class="post-title h6 sm:h5 xl:h4 m-0  m-0">
                                                         <a class="text-none"
                                                             href="{{ route('video.detail', $video->slug) }}">
                                                             {{ $video->title }}

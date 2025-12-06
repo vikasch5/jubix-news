@@ -48,7 +48,7 @@
 
                                                             <!-- Title -->
                                                             <h3
-                                                                class="post-title h5 lg:h4 xl:h3 m-0 max-w-600px text-dark text-truncate-2">
+                                                                class="post-title h5 lg:h4 xl:h3 m-0 max-w-600px text-dark ">
                                                                 <a class="text-none text-dark"
                                                                     href="{{ route('news.detail', $highlight->slug) }}">
                                                                     {{ $highlight->title }}
@@ -204,7 +204,7 @@
                                                         class="position-cover"></a>
                                                 </div>
                                                 <div class="post-header panel vstack gap-1">
-                                                    <h3 class="post-title h6 m-0 text-truncate-2">
+                                                    <h3 class="post-title h6 m-0 ">
                                                         <a class="text-none hover:text-primary duration-150"
                                                             href="{{ route('news.detail', $breakingNews->slug) }}">{{
                                                             $breakingNews->title }}</a>
@@ -286,7 +286,7 @@
 
                                                 </div>
                                                 <div class="post-header panel vstack gap-1">
-                                                    <h3 class="post-title h6 m-0 text-truncate-2">
+                                                    <h3 class="post-title h6 m-0 ">
                                                         <a class="text-none hover:text-primary duration-150"
                                                             href="{{ route('video.detail', $video->slug) }}">{{
                                                             $video->title }}</a>
@@ -402,7 +402,7 @@
                                                             <span>2h</span>
                                                         </div>
                                                         <h3
-                                                            class="post-title h5 lg:h4 m-0 max-w-600px text-white text-truncate-2">
+                                                            class="post-title h5 lg:h4 m-0 max-w-600px text-white ">
                                                             <a class="text-none text-white" href="blog-details.html">The
                                                                 Importance of Sleep: Tips for Better Rest and
                                                                 Recovery</a>
@@ -455,7 +455,7 @@
                                                             <div>
                                                                 <div
                                                                     class="post-header panel vstack justify-between gap-1">
-                                                                    <h3 class="post-title h6 m-0 text-truncate-2">
+                                                                    <h3 class="post-title h6 m-0 ">
                                                                         <a class="text-none hover:text-primary duration-150"
                                                                             href="blog-details.html">{{ $topnews->title
                                                                             }}</a>
@@ -542,7 +542,7 @@
                                                     </div>
                                                     <div
                                                         class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-300px lg:max-w-600px p-2 md:p-4 xl:p-6 z-1">
-                                                        <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2"
+                                                        <h3 class="post-title h4 lg:h3 xl:h2 m-0 "
                                                             data-swiper-parallax-x="-8">
                                                             <a class="text-none" href="blog-details.html">Balancing Work
                                                                 and Wellness: Tech Solutions for Healthy</a>
@@ -606,7 +606,7 @@
                                                     </div>
                                                     <div
                                                         class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-300px lg:max-w-600px p-2 md:p-4 xl:p-6 z-1">
-                                                        <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2"
+                                                        <h3 class="post-title h4 lg:h3 xl:h2 m-0 "
                                                             data-swiper-parallax-x="-8">
                                                             <a class="text-none" href="blog-details.html">Business
                                                                 Agility the Digital Age: Leveraging AI and
@@ -671,7 +671,7 @@
                                                     </div>
                                                     <div
                                                         class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-300px lg:max-w-600px p-2 md:p-4 xl:p-6 z-1">
-                                                        <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2"
+                                                        <h3 class="post-title h4 lg:h3 xl:h2 m-0 "
                                                             data-swiper-parallax-x="-8">
                                                             <a class="text-none" href="blog-details.html">The Art of
                                                                 Baking: From Classic Bread to Artisan Pastries</a>
@@ -735,7 +735,7 @@
                                                     </div>
                                                     <div
                                                         class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-300px lg:max-w-600px p-2 md:p-4 xl:p-6 z-1">
-                                                        <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2"
+                                                        <h3 class="post-title h4 lg:h3 xl:h2 m-0 "
                                                             data-swiper-parallax-x="-8">
                                                             <a class="text-none" href="blog-details.html">AI-Powered
                                                                 Financial Planning: How Algorithms Revolutionizing</a>
@@ -836,7 +836,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <p
-                                                                class="fs-6 m-0 text-truncate-2 text-gray-900 dark:text-white">
+                                                                class="fs-6 m-0  text-gray-900 dark:text-white">
                                                                 Balancing Work and Wellness: Tech Solutions for Healthy
                                                             </p>
                                                         </div>
@@ -874,7 +874,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <p
-                                                                class="fs-6 m-0 text-truncate-2 text-gray-900 dark:text-white">
+                                                                class="fs-6 m-0  text-gray-900 dark:text-white">
                                                                 Business Agility the Digital Age: Leveraging AI and
                                                                 Automation</p>
                                                         </div>
@@ -912,7 +912,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <p
-                                                                class="fs-6 m-0 text-truncate-2 text-gray-900 dark:text-white">
+                                                                class="fs-6 m-0  text-gray-900 dark:text-white">
                                                                 The Art of Baking: From Classic Bread to Artisan
                                                                 Pastries</p>
                                                         </div>
@@ -950,7 +950,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <p
-                                                                class="fs-6 m-0 text-truncate-2 text-gray-900 dark:text-white">
+                                                                class="fs-6 m-0  text-gray-900 dark:text-white">
                                                                 AI-Powered Financial Planning: How Algorithms
                                                                 Revolutionizing</p>
                                                         </div>
@@ -1018,14 +1018,14 @@
                                                         </div>
                                                         <div>
                                                             <div class="post-header panel vstack justify-between gap-1">
-                                                                <h3 class="post-title h5 lg:h4 m-0 text-truncate-2">
+                                                                <h3 class="post-title h5 lg:h4 m-0 ">
                                                                     <a class="text-none hover:text-primary duration-150"
                                                                         href="{{ route('news.detail', $latestNews->slug) }}">{{
                                                                         $latestNews->title }}</a>
                                                                 </h3>
                                                             </div>
                                                             <p
-                                                                class="post-excrept ft-tertiary fs-6 text-gray-900 dark:text-white text-opacity-60 text-truncate-2 my-1">
+                                                                class="post-excrept ft-tertiary fs-6 text-gray-900 dark:text-white text-opacity-60  my-1">
                                                                 {{
                                                                 \Illuminate\Support\Str::words(strip_tags($latestNews->description),
                                                                 50, '...') }}

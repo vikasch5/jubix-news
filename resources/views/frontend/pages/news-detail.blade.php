@@ -94,7 +94,7 @@
                              $shareText  = $news->title . "\n" . $shareUrl;
                         @endphp
                             class="panel vstack items-center max-w-400px sm:max-w-500px xl:max-w-md mx-auto gap-2 md:gap-3">
-                            <h1 class="h4 sm:h2 lg:h1 xl:display-6">{{ $news->title }}</h1>
+                            <h1 class="text-dark fs-1 fs-md-1">{{ $news->title }}</h1>
                             <ul class="post-share-icons nav-x gap-1 dark:text-white">
                                 <li>
                                     <a class="btn btn-md p-0 border-gray-900 border-opacity-15 w-32px lg:w-48px h-32px lg:h-48px text-dark dark:text-white dark:border-white hover:bg-primary hover:border-primary hover:text-white rounded-circle"
