@@ -178,7 +178,7 @@
                                     <div class="post-author hstack gap-1 m-0">
                                         <a href="#"
                                             data-uc-tooltip="Peter Sawyer">
-                                            <img src="{{ asset('frontend/images/avatars/02.png') }}"
+                                            <img src="{{ $news->reporter_img ? asset($news->reporter_img) : asset('frontend/images/avatars/02.png') }}"
                                                 alt="{{ $news->reporter_name }}"
                                                 class="w-24px h-24px rounded-circle">
                                         </a>

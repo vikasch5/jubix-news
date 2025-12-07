@@ -40,6 +40,11 @@
                                         <input type="text" name="reporter_name" class="form-control"
                                             value="{{ optional($news)->reporter_name }}" placeholder="Reporter Name">
                                     </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Reporter Photo</label>
+                                        <input type="file" name="reporter_img" class="form-control"
+                                            value="{{ optional($news)->reporter_img }}">
+                                    </div>
 
                                     <!-- Category -->
                                     <input type="hidden" id="subcategory_get_url"

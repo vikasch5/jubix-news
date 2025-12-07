@@ -61,6 +61,20 @@ class NewsController
 
             ]
         );
+        if ($request->hasFile('reporter_img')) {
+
+            // Delete old reporter image (if exists)
+            if ($news->reporter_img && file_exists(public_path($news->reporter_img))) {
+                unlink(public_path($news->reporter_img));
+            }
+
+            $reporterImg = $request->file('reporter_img');
+            $reporterImgName = time() . '-reporter-' . uniqid() . '.' . $reporterImg->extension();
+            $reporterImg->move(public_path('uploads/reporters/'), $reporterImgName);
+
+            $news->reporter_img = 'uploads/reporters/' . $reporterImgName;
+            $news->save();
+        }
 
         // -----------------------------------
         // Merge old + new images (IMPORTANT)

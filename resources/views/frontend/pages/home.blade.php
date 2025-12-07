@@ -67,21 +67,21 @@
                                                                                                                             <i class="icon-clock"></i>
                                                                                                                             <span>{{
                                                             $highlight->created_at->diffForHumans()
-                                                                                                                                }}</span>
+                                                                                                                                                                                }}</span>
                                                                                                                         </div>
 
                                                                                                                         <!-- Comments -->
                                                                                                                         <div class="hstack gap-narrow">
                                                                                                                             <i class="icon-narrow unicon-chat"></i>
                                                                                                                             <span>{{ $highlight->comments->count()
-                                                                                                                                }}</span>
+                                                                                                                                                                                }}</span>
                                                                                                                         </div>
 
                                                                                                                         <!-- Author -->
                                                                                                                         <div class="post-author hstack gap-1">
                                                                                                                             <a href="page-author.html"
                                                                                                                                 data-uc-tooltip="Peter Sawyer">
-                                                                                                                                <img src="{{ asset('frontend/images/avatars/02.png') }}"
+                                                                                                                                <img src="{{ $highlight->reporter_img ? asset($highlight->reporter_img) : asset('frontend/images/avatars/02.png') }}"
                                                                                                                                     alt="{{ $highlight->reporter_name }}"
                                                                                                                                     class="w-24px h-24px rounded-circle">
                                                                                                                             </a>
@@ -216,7 +216,7 @@
                                                                                             <div>
                                                                                                 <div class="post-date hstack gap-narrow">
                                                                                                     <span>{{ $breakingNews->created_at->format('M d, Y')
-                                                                                                        }}</span>
+                                                                                                                                            }}</span>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div>·</div>
@@ -298,7 +298,7 @@
                                                                                             <div>
                                                                                                 <div class="post-date hstack gap-narrow">
                                                                                                     <span>{{ $breakingNews->created_at->format('M d, Y')
-                                                                                                        }}</span>
+                                                                                                                                            }}</span>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div>·</div>
@@ -459,12 +459,12 @@
                                                                                         <h3 class="post-title h6 m-0 ">
                                                                                             <a class="text-none hover:text-primary duration-150"
                                                                                                 href="blog-details.html">{{ $topnews->title
-                                                                                                }}</a>
+                                                                                                                    }}</a>
                                                                                         </h3>
                                                                                         <div
                                                                                             class="post-date hstack gap-narrow fs-7 text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
                                                                                             <span>{{ $topnews->created_at->diffForHumans()
-                                                                                                }}</span>
+                                                                                                                    }}</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -795,16 +795,16 @@
                                         <!-- Slides thumbs -->
                                         <div class="swiper swiper-thumbs swiper-thumbs-progress rounded order-2"
                                             data-uc-swiper="items: 2;
-                                                                                                                                                                                                    gap: 4; 
-                                                                                                                                                                                                    disable-class: last-slide;"
+                                                                                                                                                                                                        gap: 4; 
+                                                                                                                                                                                                        disable-class: last-slide;"
                                             data-uc-swiper-s="items: auto;
-                                                                                                                                                                                                    direction: vertical;
-                                                                                                                                                                                                    autoHeight: true;
-                                                                                                                                                                                                    mousewheel: true;
-                                                                                                                                                                                                    freeMode: false;
-                                                                                                                                                                                                    watchSlidesVisibility: true;
-                                                                                                                                                                                                    watchSlidesProgress: true;
-                                                                                                                                                                                                    watchOverflow: true">
+                                                                                                                                                                                                        direction: vertical;
+                                                                                                                                                                                                        autoHeight: true;
+                                                                                                                                                                                                        mousewheel: true;
+                                                                                                                                                                                                        freeMode: false;
+                                                                                                                                                                                                        watchSlidesVisibility: true;
+                                                                                                                                                                                                        watchSlidesProgress: true;
+                                                                                                                                                                                                        watchOverflow: true">
                                             <div class="swiper-wrapper md:flex-1">
                                                 <div class="swiper-slide overflow-hidden rounded min-h-64px lg:min-h-100px">
                                                     <div class="swiper-slide-progress position-cover z-0">

@@ -73,8 +73,8 @@
                                                                     <div>
                                                                         <div class="post-author hstack gap-1">
                                                                             <a href="#" data-uc-tooltip="Jason Blake"><img
-                                                                                    src="{{ asset('frontend/images/avatars/05.png') }}"
-                                                                                    alt="Jason Blake"
+                                                                                    src="{{ $news->reporter_img ? asset($news->reporter_img) : asset('frontend/images/avatars/02.png') }}"
+                                                                                    alt="{{ $news->reporter_name }}"
                                                                                     class="w-24px h-24px rounded-circle"></a>
                                                                             <a href="#"
                                                                                 class="text-black dark:text-white text-none fw-bold">{{ $news->reporter_name }}</a>
