@@ -105,7 +105,8 @@ class NewsController
 
         return response()->json([
             'success' => true,
-            'message' => $request->news_id ? "News Updated Successfully" : "News Added Successfully"
+            'message' => $request->news_id ? "News Updated Successfully" : "News Added Successfully",
+            'redirect_url'=> "reload"
         ]);
     }
 

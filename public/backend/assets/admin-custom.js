@@ -13,7 +13,11 @@ function notify_it(status, message, redirectUrl = null, type = 'alert', options 
             allowEscapeKey: false // Prevent closing with Esc key
         }).then((result) => {
             if (redirectUrl && result.isConfirmed) {
-                window.location.href = redirectUrl;
+                if (redirectUrl === "reload") {
+                    window.location.reload();
+                } else {
+                    window.location.href = redirectUrl;
+                }
             }
         });
     }
@@ -24,7 +28,11 @@ function notify_it(status, message, redirectUrl = null, type = 'alert', options 
             flasher[status](message);
             if (redirectUrl) {
                 setTimeout(() => {
-                    window.location.href = redirectUrl;
+                    if (redirectUrl === "reload") {
+                        window.location.reload();
+                    } else {
+                        window.location.href = redirectUrl;
+                    }
                 }, options.redirectDelay || 2000);
             }
         } else {
@@ -69,7 +77,11 @@ $(document).ready(function () {
                     // Redirect if needed
                     if (response.redirect_url) {
                         setTimeout(function () {
-                            window.location.href = response.redirect_url;
+                            if (response.redirect_url === "reload") {
+                                window.location.reload();
+                            } else {
+                                window.location.href = response.redirect_url;
+                            }
                         }, 2000);
                     }
                 } else {
