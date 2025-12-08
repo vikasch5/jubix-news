@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\VideoController;
 use App\Http\Controllers\Frontend\FrontendController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
@@ -69,5 +70,9 @@ Route::prefix('admin')->group(function () {
 
 
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');
+        Route::get('/run-migrate', function () {
+            Artisan::call('migrate', ['--force' => true]);
+            return nl2br(Artisan::output());
+        });
     });
 });
