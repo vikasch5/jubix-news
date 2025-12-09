@@ -71,7 +71,7 @@
                         <div class="vr"></div>
                     </div>
                     <div class="footer-copyright vstack sm:hstack justify-center items-center gap-1 lg:gap-2">
-                        <p>Bharat News ©
+                        <p>Bharat Headline ©
                             <script>
                                 document.write(
                                     new Date().getFullYear()
