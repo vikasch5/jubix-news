@@ -13,7 +13,7 @@ class NewsController
 {
     public function index()
     {
-        $news = News::with('category', 'subCategory')->paginate(10);
+        $news = News::with('category', 'subCategory')->orderByDesc('id')->paginate(10);
         return view('backend.pages.news-list', compact('news'));
     }
 
