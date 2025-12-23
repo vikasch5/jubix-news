@@ -458,7 +458,7 @@
                                                                                         class="post-header panel vstack justify-between gap-1">
                                                                                         <h3 class="post-title h6 m-0 ">
                                                                                             <a class="text-none hover:text-primary duration-150"
-                                                                                                href="blog-details.html">{{ $topnews->title
+                                                                                                href="{{ route('news.detail', $topnews->slug) }}">{{ $topnews->title
                                                                                                                     }}</a>
                                                                                         </h3>
                                                                                         <div
@@ -479,7 +479,7 @@
                                                                                                 alt="The Future of Sustainable Living: Driving Eco-Friendly Lifestyles"
                                                                                                 data-uc-img="loading: lazy">
                                                                                         </div>
-                                                                                        <a href="blog-details.html"
+                                                                                        <a href="{{ route('news.detail', $topnews->slug) }}"
                                                                                             class="position-cover"></a>
                                                                                     </div>
                                                                                 </div>
