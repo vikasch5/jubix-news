@@ -29,12 +29,18 @@
   <link rel="preload" href="{{ asset('frontend/js/helpers/anime-helper-defined-timelines.js')}}" as="script">
   <link rel="preload" href="{{ asset('frontend/js/uikit-components-bs.js')}}" as="script">
   <link rel="preload" href="{{ asset('frontend/js/app.js')}}" as="script">
-   <meta property="og:title" content="@yield('og_title', optional($settings)->meta_title)">
+  {{-- Open Graph (WhatsApp / Facebook) --}}
+  <meta property="og:title" content="@yield('og_title', optional($settings)->meta_title)">
   <meta property="og:description" content="@yield('og_description', optional($settings)->meta_description)">
-  <meta property="og:image" content="@yield('og_image', asset(optional($settings)->logo))">
+
+  <meta property="og:image" content="@yield('og_image', url(optional($settings)->logo))">
+  <meta property="og:image:secure_url" content="@yield('og_image', url(optional($settings)->logo))">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:type" content="@yield('og_type', 'article')">
-
   <!-- Twitter card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="@yield('og_title', optional($settings)->meta_title)">
