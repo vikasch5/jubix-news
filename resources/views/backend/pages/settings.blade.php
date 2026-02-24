@@ -122,6 +122,17 @@
                                             placeholder="YouTube Channel URL" value="{{ $setting->youtube ?? '' }}">
                                     </div>
 
+                                    <div class="col-md-12">
+                                        <h5 class="fw-bold">Live Tv</h5>
+                                        <hr>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Live Tv URL</label>
+                                        <input type="text" name="live_tv_url" class="form-control" placeholder="Live Tv URL"
+                                            value="{{ $setting->live_tv_url ?? '' }}">
+                                    </div>
+
                                     <!-- Save -->
                                     <div class="col-md-12 mt-3">
                                         <button type="submit" class="btn btn-primary">

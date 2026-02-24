@@ -24,6 +24,7 @@ Route::get('search/{param}/{page?}', [FrontendController::class, 'search'])->nam
 Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('contact.us');
 Route::get('contact-form-store', [FrontendController::class, 'contactUsStore'])->name('contact.store');
 Route::get('classified-ads', [FrontendController::class, 'classifiedAds'])->name('classified.ads');
+Route::get('live-tv', [FrontendController::class, 'liveTv'])->name('live.tv');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login.form');

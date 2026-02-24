@@ -18,5 +18,6 @@ class Setting extends Model
         'linkedin',
         'whatsapp',
         'youtube',
+        'live_tv_url',
     ];
 }

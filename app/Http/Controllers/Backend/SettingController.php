@@ -92,6 +92,7 @@ class SettingController
         $setting->linkedin  = $request->linkedin;
         $setting->whatsapp  = $request->whatsapp;
         $setting->youtube   = $request->youtube;
+        $setting->live_tv_url   = $request->live_tv_url;
 
         $setting->save();
 

@@ -124,4 +124,9 @@ class FrontendController
         $ads = ClassifiedAds::where('status', 'active')->get();
         return view('frontend.pages.classified-ads', compact('ads'));
     }
+
+    public function liveTv(){
+        $video = [];
+        return view('frontend.pages.live-tv', compact('video'));
+    }
 }
