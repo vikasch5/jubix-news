@@ -132,6 +132,10 @@
                                         <input type="text" name="live_tv_url" class="form-control" placeholder="Live Tv URL"
                                             value="{{ $setting->live_tv_url ?? '' }}">
                                     </div>
+                                     <div class="col-md-6 mb-3">
+                                        <label class="form-label">Live Tv Description</label>
+                                        <textarea name="live_tv_description" class="form-control" placeholder="Live Tv Description">{{ $setting->live_tv_description ?? '' }}</textarea>
+                                    </div>
 
                                     <!-- Save -->
                                     <div class="col-md-12 mt-3">

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->string('live_tv_url')->nullable()->after('youtube');
+            $table->text('live_tv_description')->nullable()->after('live_tv_url');
+            $table->string('bhakti_live_tv_url')->nullable()->after('live_tv_description');
+            $table->string('bhakti_live_tv_description')->nullable()->after('bhakti_live_tv_url');
+
         });
     }
 
@@ -23,6 +27,9 @@ return new class extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->dropColumn('live_tv_url');
+            $table->dropColumn('live_tv_description');
+            $table->dropColumn('bhakti_live_tv_url');
+            $table->dropColumn('bhakti_live_tv_description');
         });
     }
 };

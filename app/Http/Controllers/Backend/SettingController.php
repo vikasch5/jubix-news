@@ -20,7 +20,7 @@ class SettingController
         // --------------------------
         $request->validate([
             'favicon' => 'nullable|image|mimes:png,jpg,jpeg,ico|max:1024|dimensions:max_width=50,max_height=50',
-            'logo'    => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048|dimensions:max_width=200,max_height=100',
+            'logo' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048|dimensions:max_width=200,max_height=100',
         ], [
             'favicon.dimensions' => 'Favicon must be max 50x50px.',
             'logo.dimensions' => 'Logo must be max 200x100px.',
@@ -40,8 +40,8 @@ class SettingController
                 @unlink(public_path($setting->favicon));
             }
 
-            $file      = $request->file('favicon');
-            $fileName  = time() . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file = $request->file('favicon');
+            $fileName = time() . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
             $uploadDir = public_path('uploads/settings/');
 
             if (!file_exists($uploadDir)) {
@@ -64,8 +64,8 @@ class SettingController
                 @unlink(public_path($setting->logo));
             }
 
-            $file      = $request->file('logo');
-            $fileName  = time() . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file = $request->file('logo');
+            $fileName = time() . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
             $uploadDir = public_path('uploads/settings/');
 
             if (!file_exists($uploadDir)) {
@@ -82,17 +82,18 @@ class SettingController
         // 🔥 SAVE OTHER FIELDS
         // --------------------------
         // $setting->font_style    = $request->font_style;
-        $setting->meta_title       = $request->meta_title;
+        $setting->meta_title = $request->meta_title;
         $setting->meta_description = $request->meta_description;
-        $setting->meta_keywords    = $request->meta_keywords;
+        $setting->meta_keywords = $request->meta_keywords;
 
         $setting->instagram = $request->instagram;
-        $setting->facebook  = $request->facebook;
-        $setting->twitter   = $request->twitter;
-        $setting->linkedin  = $request->linkedin;
-        $setting->whatsapp  = $request->whatsapp;
-        $setting->youtube   = $request->youtube;
-        $setting->live_tv_url   = $request->live_tv_url;
+        $setting->facebook = $request->facebook;
+        $setting->twitter = $request->twitter;
+        $setting->linkedin = $request->linkedin;
+        $setting->whatsapp = $request->whatsapp;
+        $setting->youtube = $request->youtube;
+        $setting->live_tv_url = $request->live_tv_url;
+        $setting->live_tv_description = $request->live_tv_description;
 
         $setting->save();
 

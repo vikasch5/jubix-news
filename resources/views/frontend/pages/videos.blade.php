@@ -22,6 +22,10 @@
                     </header>
 
                     <div class="row g-4 xl:g-8">
+                        <div class="col-12">
+                            <a class="btn btn-primary">BharatTV</a>
+                            <a class="btn btn-primary">Bharat TV Bhakti</a>
+                        </div>
                         <div class="col">
                             <div class="panel text-center">
                                 <div

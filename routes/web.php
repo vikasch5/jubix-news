@@ -22,7 +22,7 @@ Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name
 Route::get('terms-conditions', [FrontendController::class, 'termsConditions'])->name('terms.conditions');
 Route::get('search/{param}/{page?}', [FrontendController::class, 'search'])->name('search');
 Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('contact.us');
-Route::get('contact-form-store', [FrontendController::class, 'contactUsStore'])->name('contact.store');
+Route::post('contact-form-store', [FrontendController::class, 'contactUsStore'])->name('contact.store');
 Route::get('classified-ads', [FrontendController::class, 'classifiedAds'])->name('classified.ads');
 Route::get('live-tv', [FrontendController::class, 'liveTv'])->name('live.tv');
 
