@@ -94,6 +94,8 @@ class SettingController
         $setting->youtube = $request->youtube;
         $setting->live_tv_url = $request->live_tv_url;
         $setting->live_tv_description = $request->live_tv_description;
+        $setting->bhakti_live_tv_url = $request->bhakti_live_tv_url;
+        $setting->bhakti_live_tv_description = $request->bhakti_live_tv_description;
 
         $setting->save();
 

@@ -647,7 +647,7 @@
                     <div class="uc-navbar-right gap-2 lg:gap-3">
                         <div class="uc-navbar-item d-inline-flex lg:d-none">
                             <a class="btn btn-xs gap-narrow ps-1 border rounded-pill fw-bold dark:text-white hover:bg-gray-25 dark:hover:bg-gray-900"
-                                href="#live_now" data-uc-scroll="offset: 128">
+                                href="{{ route('live.tv') }}" data-uc-scroll="offset: 128">
                                 <i class="icon icon-narrow unicon-dot-mark text-red" data-uc-animate="flash"></i>
                                 <span>Live</span>
                             </a>

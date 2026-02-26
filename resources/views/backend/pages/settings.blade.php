@@ -136,6 +136,15 @@
                                         <label class="form-label">Live Tv Description</label>
                                         <textarea name="live_tv_description" class="form-control" placeholder="Live Tv Description">{{ $setting->live_tv_description ?? '' }}</textarea>
                                     </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Bhakti Live Tv URL</label>
+                                        <input type="text" name="bhakti_live_tv_url" class="form-control" placeholder="Bhakti Live Tv URL"
+                                            value="{{ $setting->bhakti_live_tv_url ?? '' }}">
+                                    </div>
+                                     <div class="col-md-6 mb-3">
+                                        <label class="form-label">Bhakti Live Tv Description</label>
+                                        <textarea name="bhakti_live_tv_description" class="form-control" placeholder="Bhakti Live Tv Description">{{ $setting->bhakti_live_tv_description ?? '' }}</textarea>
+                                    </div>
 
                                     <!-- Save -->
                                     <div class="col-md-12 mt-3">
