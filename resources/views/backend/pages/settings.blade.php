@@ -132,20 +132,42 @@
                                         <input type="text" name="live_tv_url" class="form-control" placeholder="Live Tv URL"
                                             value="{{ $setting->live_tv_url ?? '' }}">
                                     </div>
-                                     <div class="col-md-6 mb-3">
+                                    <div class="col-md-6 mb-3">
                                         <label class="form-label">Live Tv Description</label>
-                                        <textarea name="live_tv_description" class="form-control" placeholder="Live Tv Description">{{ $setting->live_tv_description ?? '' }}</textarea>
+                                        <textarea name="live_tv_description" class="form-control"
+                                            placeholder="Live Tv Description">{{ $setting->live_tv_description ?? '' }}</textarea>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Bhakti Live Tv URL</label>
-                                        <input type="text" name="bhakti_live_tv_url" class="form-control" placeholder="Bhakti Live Tv URL"
+                                        <input type="text" name="bhakti_live_tv_url" class="form-control"
+                                            placeholder="Bhakti Live Tv URL"
                                             value="{{ $setting->bhakti_live_tv_url ?? '' }}">
                                     </div>
-                                     <div class="col-md-6 mb-3">
+                                    <div class="col-md-6 mb-3">
                                         <label class="form-label">Bhakti Live Tv Description</label>
-                                        <textarea name="bhakti_live_tv_description" class="form-control" placeholder="Bhakti Live Tv Description">{{ $setting->bhakti_live_tv_description ?? '' }}</textarea>
+                                        <textarea name="bhakti_live_tv_description" class="form-control"
+                                            placeholder="Bhakti Live Tv Description">{{ $setting->bhakti_live_tv_description ?? '' }}</textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="fw-bold">Scripts /Codes</h5>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Code In Head</label>
+                                        <textarea name="code_in_head" class="form-control"
+                                            placeholder="Code In Head">{{ $setting->code_in_head ?? '' }}</textarea>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Code after &lt;body&gt; tag</label>
+                                        <textarea name="code_after_body" class="form-control"
+                                            placeholder="Paste code that should appear right after <body> tag">{{ $setting->code_after_body ?? '' }}</textarea>
                                     </div>
 
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Code before &lt;/body&gt; tag</label>
+                                        <textarea name="code_before_body_close" class="form-control"
+                                            placeholder="Paste code that should appear before </body> tag">{{ $setting->code_before_body_close ?? '' }}</textarea>
+                                    </div>
                                     <!-- Save -->
                                     <div class="col-md-12 mt-3">
                                         <button type="submit" class="btn btn-primary">

@@ -83,4 +83,5 @@
   </style>
   @endif --}}
 
+  {!! optional($settings)->code_in_head !!}
 </head>

@@ -87,6 +87,8 @@
                     </div>
                 </div>
             </div>
+             <a href="https://softtrill.com" style="color: #121212;">Softtrill</a>
+            <a href="https://vblogz.com" style="color: #121212;">Vblogz</a>
         </div>
     </div>
 </footer>

@@ -96,6 +96,9 @@ class SettingController
         $setting->live_tv_description = $request->live_tv_description;
         $setting->bhakti_live_tv_url = $request->bhakti_live_tv_url;
         $setting->bhakti_live_tv_description = $request->bhakti_live_tv_description;
+        $setting->code_in_head = $request->code_in_head;
+        $setting->code_after_body = $request->code_after_body;
+        $setting->code_before_body_close = $request->code_before_body_close;
 
         $setting->save();
 

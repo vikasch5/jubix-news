@@ -3,7 +3,7 @@
 @include('frontend.common.head')
 
 <body class="uni-body panel bg-white text-gray-900 dark:bg-black dark:text-white text-opacity-50 overflow-x-hidden">
-
+{!! optional($settings)->code_after_body !!}
 
 
     @include('frontend.common.header')
@@ -82,6 +82,8 @@
             setDarkMode(0);
         }
     </script>
+
+    {!! optional($settings)->code_before_body_close !!}
 </body>
 
 </html>

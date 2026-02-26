@@ -692,7 +692,7 @@
 @media (max-width: 620px) {
     /* We override your original code here to keep them inline */
     .channel-selector-segmented .segmented-control {
-        flex-direction: row !important; 
+        flex-direction: row !important;
     }
 }
 
