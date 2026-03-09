@@ -614,7 +614,7 @@
                 </div>
             </div>
         </div>
-        <div class="uc-bottom-navbar panel z-1">
+        <div class="uc-bottom-navbar panel z-1 print-header">
             <div class="container max-w-xl">
                 <div class="uc-navbar min-h-72px lg:min-h-100px"
                     data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">

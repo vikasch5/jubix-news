@@ -13,6 +13,9 @@
 @endphp
 @section('og_image', $ogImage)
 @section('content')
+<div class="print-logo">
+    <img src="/uploads/settings/1764587430-692d77a6ea53b.png" alt="Bharat Headline">
+</div>
     <style>
         .myNewsSwiper .swiper-button-next,
         .myNewsSwiper .swiper-button-prev {
@@ -42,34 +45,59 @@
             /* adjust position */
         }
     </style>
-    {{-- <style>
-        @media print {
+    <style>
+     .print-logo{
+    display:none;
+}
 
-            body {
-                width: 997px !important;
-            }
+@media print {
 
-            /* Show header on first page only */
-            header {
-                width: 997px !important;
-                display: block;
-                position: running(header);
-            }
+    /* hide sticky website header */
+    header.uc-header{
+        display:none !important;
+    }
 
-            /* Place header only on the first page */
-            @page: first {
-                margin-top: 50mm;
-                /* adjust as needed */
-            }
+    /* show print logo */
+    .print-logo{
+        display:block;
+        text-align:center;
+        margin-bottom:25px;
+    }
 
-            @page {
-                @top-center {
-                    content: none;
-                    /* No header on other pages */
-                }
-            }
-        }
-    </style> --}}
+    .print-logo img{
+        height:70px;
+        width:auto;
+        margin:auto;
+    }
+
+    /* hide unwanted sections */
+    #recent-posts,
+    .breadcrumbs,
+    /* footer, */
+    .partners,
+    .post-share-icons{
+        display:none !important;
+    }
+
+}
+@media print{
+
+    #recent-posts,
+    .breadcrumbs,
+    /* footer, */
+    .post-share-icons{
+        display:none !important;
+    }
+
+    .NewsSection{
+        width:100% !important;
+    }
+    #blog-comment{
+        display:none !important;
+    }
+
+}
+    </style>
 
     <div id="wrapper" class="wrap overflow-hidden-x">
         <div class="breadcrumbs panel z-1 py-2 bg-gray-25 dark:bg-gray-100 dark:bg-opacity-5 dark:text-white">

@@ -87,8 +87,10 @@
                     </div>
                 </div>
             </div>
+            <div class="partners">
              <a href="https://softtrill.com" style="color: #121212;">Softtrill</a>
             <a href="https://vblogz.com" style="color: #121212;">Vblogz</a>
+            </div>
         </div>
     </div>
 </footer>
