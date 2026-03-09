@@ -11,7 +11,7 @@ class CategoryContoller
 {
     public function index()
     {
-        $categories = Category::paginate('10');
+        $categories = Category::orderBy('id', 'desc')->paginate('10');
         return view('backend.pages.category-list', compact('categories'));
     }
 
