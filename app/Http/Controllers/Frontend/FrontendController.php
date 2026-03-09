@@ -17,18 +17,18 @@ class FrontendController
     {
         $categories = Category::with('subCategories')->where('status', '1')->get();
         $allbreakingNews = News::with('comments')->where([['status', 'active'], ['is_breaking_news', '1']])
-            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->take(5)
             ->get();
-        $homeActiveCategory = Category::with('topNews')->where([['status', '1'], ['show_on_home', '1']])->get();
+        $homeActiveCategory = Category::with('topNews')->where([['status', '1'], ['show_on_home', '1']])->orderByDesc('id')->get();
         // dd($homeActiveCategory->toArray());
         $alllatestNews = News::with('comments')->where('status', 'active')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->take(10)
             ->get();
 
         $allHighlights = News::with('comments')->where([['status', 'active'], ['is_highlight', '1']])
-            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->take(5)
             ->get();
         $videos = Video::where('status', '1')->get();
@@ -43,6 +43,7 @@ class FrontendController
             ->when($sub_category, function ($query) use ($sub_category) {
                 return $query->where('sub_category_id', $sub_category->id);
             })
+            ->orderBy('id', 'desc')
             ->paginate(10);
         return view('frontend.pages.category', compact('page_category', 'sub_category', 'newslist'));
     }
@@ -51,7 +52,7 @@ class FrontendController
     {
         $news = News::with('comments')->where('slug', $slug)->firstOrFail();
         $recent_news = News::where('status', 'active')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->take(5)
             ->get();
         recordView('news', $news->id);
@@ -79,7 +80,7 @@ class FrontendController
     public function videoList()
     {
         $videos = Video::where('status', '1')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->paginate(10);
         return view('frontend.pages.videos', compact('videos'));
     }
