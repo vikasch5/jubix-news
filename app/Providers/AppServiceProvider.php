@@ -27,35 +27,26 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
-
-        // =============================
-        // Always Register Composer FIRST
-        // =============================
-
         View::composer('frontend.*', function ($view) {
-
-            $settings = Setting::first();
-
             $categories = Category::with('subCategories')
                 ->where('status', '1')
                 ->get();
 
             $headline = News::where('status', 'active')
-                ->latest()
+                ->orderBy('created_at', 'desc')
                 ->take(10)
                 ->get();
-
+            $settings = Setting::first();
             $classifiedAds = ClassifiedAds::where('status', 'active')
                 ->count();
-
             $view->with([
                 'categories' => $categories,
-                'headlines' => $headline,
+                'headlines'    => $headline,
                 'settings' => $settings,
                 'classifiedAds' => $classifiedAds,
             ]);
         });
-
+        
         if (app()->runningInConsole() || request()->is('admin/*') || request()->is('api/*')) {
             return;
         }
@@ -96,5 +87,4 @@ class AppServiceProvider extends ServiceProvider
             exit;
         }
     }
-
 }
