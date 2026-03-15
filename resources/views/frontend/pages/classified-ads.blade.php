@@ -94,7 +94,7 @@
 
               <h5 class="card-title fs-6">{{ $ad->title }}</h5>
 
-              <a href="{{ $ad->link }}" target="_blank" class="btn btn-primary btn-sm mb-3">
+              <a href="{{ $ad->link }}" target="_blank" class="btn btn-primary btn-sm">
                 View Details
               </a>
 
